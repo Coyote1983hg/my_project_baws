@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/screens/welcome_screen.dart';
-import 'package:my_project_baws/theme/theme.dart';
+
+import 'screens/welcome_screen.dart';
+import 'theme/theme.dart';
+
+
 
 void main() {
   runApp(const MyApp());
