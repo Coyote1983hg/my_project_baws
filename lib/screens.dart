@@ -25,7 +25,7 @@ class _Screen1State extends State<Screen1> {
       body: Stack(
         children: [
           Image.asset(
-            'assets/images/brandmark-design-1800x0 (3).png',
+            'assets/images/bg1.png',
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
