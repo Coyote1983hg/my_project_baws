@@ -1,0 +1,94 @@
+{
+    "explorer.confirmDelete": false,
+    "editor.formatOnSave": true,
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    "[vue]": {
+        "editor.defaultFormatter": "octref.vetur"
+    },
+    "editor.bracketPairColorization.enabled": true,
+    "editor.guides.bracketPairs": "active",
+    "explorer.confirmDragAndDrop": false,
+    "search.exclude": {
+        "**/.firebase": true,
+        "**/*.svg": true,
+        "**/dist": true
+    },
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            80
+        ],
+        "editor.selectionHighlight": false,
+        "editor.suggest.snippetsPreventQuickSuggestions": false,
+        "editor.suggestSelection": "first",
+        "editor.tabCompletion": "onlySnippets",
+        "editor.wordBasedSuggestions": "off"
+    },
+    "todo-tree.tree.showScanModeButton": false,
+    "git.enableSmartCommit": true,
+    "workbench.editorAssociations": {},
+    "git.confirmSync": false,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "explorer.experimental.fileNesting.enabled": true,
+    "explorer.experimental.fileNesting.expand": false,
+    "explorer.experimental.fileNesting.patterns": {
+        "pubspec.yaml": ".flutter-plugins, .packages, .dart_tool, .flutter-plugins-dependencies, .metadata, .packages, pubspec.lock, build.yaml, analysis_options.yaml, all_lint_rules.yaml, flutter_native_splash.yaml, l10n.yaml",
+        ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*",
+        "readme.*": "authors, backers.md, changelog*, citation*, code_of_conduct.md, codeowners, contributing.md, contributors, copying, credits, governance.md, history.md, license*, maintainers, readme*, security.md, sponsors.md",
+        "*.dart": "$(capture).g.dart, $(capture).freezed.dart",
+    },
+    "editor.inlineSuggest.enabled": true,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "workbench.colorTheme": "freeCodeCamp Dark Theme",
+    "workbench.colorCustomizations": {
+        "[Community Material Theme Darker]": {
+            "statusBar.debuggingBackground": "#1a6e74"
+        }
+    },
+    "material-icon-theme.folders.associations": {
+        "exceptions": "error",
+        "common_widgets": "shared",
+        "features": "components",
+        "domain": "class",
+        "presentation": "theme",
+        "application": "controller",
+    },
+    "dart.previewFlutterUiGuides": true,
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "workbench.iconTheme": "vscode-icons",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontWeight": "500",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "monospace",
+    "github.copilot.enable": {
+        "*": false,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false,
+        "yaml": true,
+        "dart": false,
+        "typescript": true
+    },
+    "redhat.telemetry.enabled": false,
+    "git.autoRepositoryDetection": false,
+    "files.exclude": {
+        "**/*.freezed.dart": true,
+        "**/*.g.dart": true
+    },
+    "window.zoomLevel": 0,
+    "debug.toolBarLocation": "commandCenter",
+    "explorer.compactFolders": false,
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "always",
+        "source.organizeImports": "always"
+    },
+    "files.readonlyInclude": {
+        "{**/.c4z/.extsrcs/*.PROTSYM.cbl,**/.c4z/.extsrcs/*.PROTSYM.listing}": true
+    },
+}

@@ -10,6 +10,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home:  MaterialApp(),
       theme: FlexThemeData.light(scheme: FlexScheme.greyLaw),
       darkTheme: FlexThemeData.dark(scheme: FlexScheme.greyLaw),
