@@ -43,30 +43,27 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
               )),
-          Flexible(
-            flex: 1,
-            child: Align(
-              alignment: Alignment.bottomRight,
-              child: Row(
-                children: [
-                  const Expanded(
-                    child: WelcomeButton(
-                      buttonText: 'Sign in',
-                      onTap: SignInScreen(),
-                      color: Colors.transparent,
-                      textColor: Colors.white,
-                    ),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Row(
+              children: [
+                const Expanded(
+                  child: WelcomeButton(
+                    buttonText: 'Sign in',
+                    onTap: SignInScreen(),
+                    color: Colors.transparent,
+                    textColor: Colors.white,
                   ),
-                  Expanded(
-                    child: WelcomeButton(
-                      buttonText: 'Sign up',
-                      onTap: const SignUpScreen(),
-                      color: Colors.white,
-                      textColor: lightColorScheme.primary,
-                    ),
+                ),
+                Expanded(
+                  child: WelcomeButton(
+                    buttonText: 'Sign up',
+                    onTap: const SignUpScreen(),
+                    color: Colors.white,
+                    textColor: lightColorScheme.primary,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
