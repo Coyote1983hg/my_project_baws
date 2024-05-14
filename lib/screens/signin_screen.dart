@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:my_project_baws/data/mock_database.dart';
 import 'package:my_project_baws/screens/signup_screen.dart';
 import 'package:my_project_baws/widgets/custom_scaffold.dart';
 
 import '../theme/theme.dart';
 
 class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+  MockDatabase mockDB;
+   SignInScreen(this.mockDB, {super.key});
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -236,7 +238,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (e) => const SignUpScreen(),
+                                  builder: (e) =>  SignUpScreen(widget.mockDB),
                                 ),
                               );
                             },

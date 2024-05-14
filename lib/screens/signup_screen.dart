@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:my_project_baws/data/mock_database.dart';
+import 'package:my_project_baws/screens/home_screen.dart';
 import 'package:my_project_baws/screens/signin_screen.dart';
 import 'package:my_project_baws/theme/theme.dart';
 import 'package:my_project_baws/widgets/custom_scaffold.dart';
 
 class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({super.key});
+  MockDatabase mockDB;
+  SignUpScreen(this.mockDB, {super.key});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final _formSignupKey = GlobalKey<FormState>();
+  // final _formSignupKey = GlobalKey<FormState>();
   bool agreePersonalData = true;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: SingleChildScrollView(
                 // get started form
                 child: Form(
-                  key: _formSignupKey,
+                  // key: _formSignupKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -57,12 +60,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       // full name
                       TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter Full name';
-                          }
-                          return null;
-                        },
+                        // validator: (value) {
+                        //   if (value == null || value.isEmpty) {
+                        //     return 'Please enter Full name';
+                        //   }
+                        //   return null;
+                        // },
                         decoration: InputDecoration(
                           label: const Text('Full Name'),
                           hintText: 'Enter Full Name',
@@ -88,12 +91,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       // email
                       TextFormField(
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter Email';
-                          }
-                          return null;
-                        },
+                        // validator: (value) {
+                        //   if (value == null || value.isEmpty) {
+                        //     return 'Please enter Email';
+                        //   }
+                        //   return null;
+                        // },
                         decoration: InputDecoration(
                           label: const Text('Email'),
                           hintText: 'Enter Email',
@@ -121,12 +124,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       TextFormField(
                         obscureText: true,
                         obscuringCharacter: '*',
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter Password';
-                          }
-                          return null;
-                        },
+                        // validator: (value) {
+                        //   if (value == null || value.isEmpty) {
+                        //     return 'Please enter Password';
+                        //   }
+                        //   return null;
+                        // },
                         decoration: InputDecoration(
                           label: const Text('Password'),
                           hintText: 'Enter Password',
@@ -185,7 +188,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formSignupKey.currentState!.validate() &&
+                            if (/*_formSignupKey.currentState!.validate() &&*/
                                 agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -199,6 +202,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         'Please agree to the processing of personal data')),
                               );
                             }
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomeScreen(widget.mockDB)));
                           },
                           child: const Text('Sign up'),
                         ),
@@ -267,7 +274,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (e) => const SignInScreen(),
+                                  builder: (e) =>  SignInScreen(widget.mockDB),
                                 ),
                               );
                             },

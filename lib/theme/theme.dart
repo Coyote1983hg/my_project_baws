@@ -13,7 +13,7 @@ const lightColorScheme = ColorScheme(
   shadow: Color(0xFF000000),
   outlineVariant: Color(0xFFC2C8BC),
   surface: Color(0xFFF9FAF3),
-  onSurface: Color(0xFF1A1C18),
+  onSurface: Color(0xFF1A1C18), 
 );
 
 const darkColorScheme = ColorScheme(

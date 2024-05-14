@@ -4,81 +4,97 @@ import '../domain/ClothingItem.dart';
 import '../User.dart';
 import '../domain/ShoppingCart.dart';
 
-class MockDatabase implements DatabaseRepository {}
+class MockDatabase implements DatabaseRepository {
+// mockdaten kommt irgendwann von der DB zurueck
+  List<ClothingItem> products = [
+    ClothingItem(
+      id: '1',
+      name: 'Giorgio\'s Boxer Shorts',
+      description: 'Comfortable cotton boxer shorts!',
+      price: 19.99,
+      color: 'Green',
+      imagePath: 'assets/images/310-00H-5.png',
+    ),
+    ClothingItem(
+      id: '2',
+      name: 'Giorgio\'s Boxer Shorts',
+      description: 'Comfortable cotton boxer shorts!',
+      price: 19.99,
+      color: 'Light Blue',
+      imagePath: 'assets/images/305-00H-4.png',
+    ),
+    ClothingItem(
+      id: '3',
+      name: 'Giorgio\'s Boxer Shorts',
+      description: 'Comfortable cotton boxer shorts!',
+      price: 19.99,
+      color: 'Dark Blue',
+      imagePath: 'assets/images/310-00H-6.png',
+    ),
+    ClothingItem(
+      id: '4',
+      name: 'Giorgio\'s Boxer Shorts',
+      description: 'Comfortable cotton boxer shorts!',
+      price: 19.99,
+      color: 'RED',
+      imagePath: 'assets/images/900-00H-5123.png',
+    ),
+    ClothingItem(
+      id: '5',
+      name: 'Giorgio\'s Boxer Shorts',
+      description: 'Comfortable cotton boxer shorts!',
+      price: 19.99,
+      color: 'Blue',
+      imagePath: 'assets/images/210-00H-2037.png',
+    ),
+    ClothingItem(
+      id: '6',
+      name: 'Giorgio\'s Boxer Shorts',
+      description: 'Comfortable cotton boxer shorts!',
+      price: 19.99,
+      color: 'Blue',
+      imagePath: 'assets/images/210-00H-2038.png',
+    ),
+    ClothingItem(
+      id: '7',
+      name: 'Giorgio\'s Boxer Shorts',
+      description: 'Comfortable cotton boxer shorts!',
+      price: 19.99,
+      color: 'Blue',
+      imagePath: 'assets/images/310-00H-2.png',
+    ),
+    ClothingItem(
+      id: '8',
+      name: 'Giorgio\'s Boxer Shorts',
+      description: 'Comfortable cotton boxer shorts!',
+      price: 19.99,
+      color: 'Blue',
+      imagePath: 'assets/images/305-00H-6.png',
+    )
+  ];
+  // TODO: Als map schreiben
+  List<ClothingItem> cart = [];
+// mockfunktionen
+  @override
+  List<ClothingItem> getProducts() {
+    return products;
+  }
 
-void main() {
-  final inventoryManager = InventoryManager();
+  @override
+  List<ClothingItem> getCart() {
+    return cart;
+  }
 
-  // Add 5 men's boxer shorts
-  _addBoxerShorts(inventoryManager);
+  @override
+  void addItemToCart(ClothingItem clothingItem) {
+    // zu cart liste hinzufuegen
+    cart.add(clothingItem);
+  }
 
-  // Get all clothing items
-  final allClothing = inventoryManager.getAllClothing();
-  _printAllClothing(allClothing);
-
-  // Create a user and add an item to their shopping cart
-  final user = _createUser();
-  final boxerShorts = inventoryManager.getItem('1')!;
-  user.addClothingToBasket(boxerShorts);
-  _printUserCart(user.cart);
-}
-
-void _addBoxerShorts(InventoryManager inventoryManager) {
-  inventoryManager.addItem(ClothingItem(
-    id: '1',
-    name: 'Men\'s Boxer Shorts',
-    description: 'Comfortable cotton boxer shorts',
-    price: 19.99,
-    color: 'Black',
-  ));
-  inventoryManager.addItem(ClothingItem(
-    id: '2',
-    name: 'Men\'s Boxer Shorts',
-    description: 'Comfortable cotton boxer shorts',
-    price: 19.99,
-    color: 'White',
-  ));
-  inventoryManager.addItem(ClothingItem(
-    id: '3',
-    name: 'Men\'s Boxer Shorts',
-    description: 'Comfortable cotton boxer shorts',
-    price: 19.99,
-    color: 'Blue',
-  ));
-  inventoryManager.addItem(ClothingItem(
-    id: '4',
-    name: 'Men\'s Boxer Shorts',
-    description: 'Comfortable cotton boxer shorts',
-    price: 19.99,
-    color: 'Red',
-  ));
-  inventoryManager.addItem(ClothingItem(
-    id: '5',
-    name: 'Men\'s Boxer Shorts',
-    description: 'Comfortable cotton boxer shorts',
-    price: 19.99,
-    color: 'Green',
-  ));
-}
-
-void _printAllClothing(List<ClothingItem> allClothing) {
-  print('All clothing items:');
-  for (final item in allClothing) {
-    print('- ${item.name} (${item.price} Eur, Color: ${item.color})');
+  @override
+  void removeItemFromCart(ClothingItem clothingItem) {
+    // zu cart liste entfernen
+    cart.remove(clothingItem);
   }
 }
 
-User _createUser() {
-  return User(
-    id: '1',
-    name: 'John Doe',
-    cart: ShoppingCart(),
-  );
-}
-
-void _printUserCart(ShoppingCart cart) {
-  print('\nUser\'s shopping cart:');
-  for (final item in cart.items) {
-    print('- ${item.name} (${item.price} Eur, Color: ${item.color})');
-  }
-}
