@@ -51,7 +51,7 @@ class ProductDetailsScreen extends StatelessWidget {
             ),
             SizedBox(height: 16.0),
             Text(
-              item.price.toString(),
+              item.price.toString()+ ' EUR',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0,

@@ -1,7 +1,7 @@
-import '../InventoryManager.dart';
+import '../inventory_manager.dart';
 import 'database_repository.dart';
 import '../domain/ClothingItem.dart';
-import '../User.dart';
+import '../user.dart';
 import '../domain/ShoppingCart.dart';
 
 class MockDatabase implements DatabaseRepository {
@@ -76,23 +76,27 @@ class MockDatabase implements DatabaseRepository {
   List<ClothingItem> cart = [];
 // mockfunktionen
   @override
-  List<ClothingItem> getProducts() {
+  Future<List<ClothingItem>> getProducts() async{
+     await Future.delayed(const Duration(seconds: 2));
     return products;
   }
 
   @override
-  List<ClothingItem> getCart() {
+  Future<List<ClothingItem>> getCart() async {
+     await Future.delayed(const Duration(seconds: 2));
     return cart;
   }
 
   @override
-  void addItemToCart(ClothingItem clothingItem) {
+  Future<void> addItemToCart(ClothingItem clothingItem)async {
+     await Future.delayed(const Duration(seconds: 2));
     // zu cart liste hinzufuegen
     cart.add(clothingItem);
   }
 
   @override
-  void removeItemFromCart(ClothingItem clothingItem) {
+  Future<void>removeItemFromCart(ClothingItem clothingItem) async{
+     await Future.delayed(const Duration(seconds: 2));
     // zu cart liste entfernen
     cart.remove(clothingItem);
   }

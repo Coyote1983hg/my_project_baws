@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:my_project_baws/data/mock_database.dart';
 import 'package:my_project_baws/screens/home_screen.dart';
@@ -205,7 +206,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomeScreen(widget.mockDB)));
+                                    builder: (context) =>
+                                        HomeScreen(widget.mockDB)));
                           },
                           child: const Text('Sign up'),
                         ),
@@ -250,10 +252,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Logo(Logos.facebook_f),
-                          Logo(Logos.twitter),
-                          Logo(Logos.google),
-                          Logo(Logos.apple),
+                         FaIcon(FontAwesomeIcons.google),
+                         FaIcon(FontAwesomeIcons.apple),
                         ],
                       ),
                       const SizedBox(
@@ -274,7 +274,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (e) =>  SignInScreen(widget.mockDB),
+                                  builder: (e) => SignInScreen(widget.mockDB),
                                 ),
                               );
                             },

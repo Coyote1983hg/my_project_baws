@@ -111,7 +111,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         SizedBox(height: 4.0),
                         Text(
-                          mockDB.products[index].price.toString(),
+                          mockDB.products[index].price.toString()+" EUR",
                           style: TextStyle(
                             color: const Color.fromARGB(255, 126, 115, 115),
                             fontSize: 14.0,

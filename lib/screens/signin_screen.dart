@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_project_baws/data/mock_database.dart';
 import 'package:my_project_baws/screens/signup_screen.dart';
 import 'package:my_project_baws/widgets/custom_scaffold.dart';
@@ -8,7 +8,7 @@ import '../theme/theme.dart';
 
 class SignInScreen extends StatefulWidget {
   MockDatabase mockDB;
-   SignInScreen(this.mockDB, {super.key});
+  SignInScreen(this.mockDB, {super.key});
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -211,13 +211,11 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(
                         height: 25.0,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Logo(Logos.facebook_f),
-                          Logo(Logos.twitter),
-                          Logo(Logos.google),
-                          Logo(Logos.apple),
+                          FaIcon(FontAwesomeIcons.google),
+                          FaIcon(FontAwesomeIcons.apple),
                         ],
                       ),
                       const SizedBox(
@@ -238,7 +236,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (e) =>  SignUpScreen(widget.mockDB),
+                                  builder: (e) => SignUpScreen(widget.mockDB),
                                 ),
                               );
                             },

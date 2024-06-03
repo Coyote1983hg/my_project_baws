@@ -1,7 +1,7 @@
-import 'Order.dart';
+import 'order.dart';
 import 'domain/ShoppingCart.dart';
-import 'Customer.dart';
-import 'InventoryManager.dart';
+import 'customer.dart';
+import 'inventory_manager.dart';
 import 'domain/ClothingItem.dart';
 // Order Manager class
 class OrderManager {
