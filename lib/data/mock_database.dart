@@ -101,4 +101,3 @@ class MockDatabase implements DatabaseRepository {
     cart.remove(clothingItem);
   }
 }
-

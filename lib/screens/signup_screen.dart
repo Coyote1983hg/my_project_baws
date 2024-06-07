@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:icons_plus/icons_plus.dart';
+
 import 'package:my_project_baws/data/mock_database.dart';
 import 'package:my_project_baws/screens/home_screen.dart';
 import 'package:my_project_baws/screens/signin_screen.dart';

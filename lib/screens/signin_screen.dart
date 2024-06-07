@@ -32,6 +32,7 @@ class _SignInScreenState extends State<SignInScreen> {
     _pwController.dispose();
     super.dispose();
   }
+   bool showPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -74,6 +75,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       TextFormField(
                         controller: _emailController,
+                        
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter Email';
@@ -104,6 +106,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         height: 25.0,
                       ),
                       TextFormField(
+                           controller: _pwController,
+                           
                         obscureText: true,
                         obscuringCharacter: '*',
                         validator: (value) {
