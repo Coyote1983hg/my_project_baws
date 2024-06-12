@@ -256,8 +256,9 @@ class _SignInScreenState extends State<SignInScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (e) =>
-                                      SignUpScreen(widget.databaseRepository),
+                                  builder: (e) => SignUpScreen(
+                                      databaseRepository:
+                                          widget.databaseRepository),
                                 ),
                               );
                             },

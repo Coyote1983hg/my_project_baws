@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/data/mock_database.dart';
+import 'package:my_project_baws/data/database_repository.dart';
 import 'package:my_project_baws/domain/ClothingItem.dart';
 import 'package:my_project_baws/screens/cart_screen.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   // Attribute
   ClothingItem item;
-  MockDatabase mockDB;
+  final DatabaseRepository databaseRepository;
 
   // Konstruktor
-  ProductDetailsScreen(this.item, this.mockDB, {super.key});
+  ProductDetailsScreen(this.item,
+      {super.key, required this.databaseRepository});
 
   // Methoden
   @override
@@ -19,7 +20,7 @@ class ProductDetailsScreen extends StatelessWidget {
         title: const Text('Product Details'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -31,40 +32,41 @@ class ProductDetailsScreen extends StatelessWidget {
             const SizedBox(height: 16.0),
             Text(
               item.name,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24.0,
               ),
             ),
-            SizedBox(height: 8.0),
+            const SizedBox(height: 8.0),
             Text(
               item.description,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16.0,
               ),
             ),
             Text(
               item.color,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16.0,
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             Text(
-              item.price.toString()+ ' EUR',
-              style: TextStyle(
+              '${item.price} EUR',
+              style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0,
               ),
             ),
-            SizedBox(height: 16.0),
+            const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                mockDB.addItemToCart(item);
+                databaseRepository.addItemToCart(item);
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CartScreen(mockDB)));
+                        builder: (context) => CartScreen(
+                            databaseRepository: databaseRepository)));
               },
               child: const Text('Add to Cart'),
             ),

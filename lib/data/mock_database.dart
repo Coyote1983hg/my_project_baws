@@ -4,7 +4,7 @@ import 'database_repository.dart';
 class MockDatabase implements DatabaseRepository {
 // mockdaten kommt irgendwann von der DB zurueck
   @override
-  List<ClothingItem> products = [
+  late List<ClothingItem> products = [
     ClothingItem(
       id: '1',
       name: 'Giorgio\'s Boxer Shorts',

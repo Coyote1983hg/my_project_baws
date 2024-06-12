@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-import 'package:my_project_baws/data/mock_database.dart';
-import 'package:my_project_baws/screens/database_repository.dart';
+import 'package:my_project_baws/data/database_repository.dart';
 import 'package:my_project_baws/screens/home_screen.dart';
 import 'package:my_project_baws/screens/signin_screen.dart';
 import 'package:my_project_baws/theme/theme.dart';
@@ -10,7 +8,7 @@ import 'package:my_project_baws/widgets/custom_scaffold.dart';
 
 class SignUpScreen extends StatefulWidget {
   final DatabaseRepository databaseRepository;
-  SignUpScreen({ required this.databaseRepository, super.key});
+  const SignUpScreen({required this.databaseRepository, super.key});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -207,8 +205,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        HomeScreen(widget.databaseRepository)));
+                                    builder: (context) => HomeScreen(
+                                          databaseRepository:
+                                              widget.databaseRepository,
+                                        )));
                           },
                           child: const Text('Sign up'),
                         ),
@@ -250,7 +250,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 30.0,
                       ),
                       // sign up social media logo
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           FaIcon(FontAwesomeIcons.google),
@@ -275,8 +275,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (e) =>
-                                      SignInScreen(widget.databaseRepository),
+                                  builder: (e) => SignInScreen(
+                                      databaseRepository:
+                                          widget.databaseRepository),
                                 ),
                               );
                             },

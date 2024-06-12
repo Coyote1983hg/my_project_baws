@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/data/mock_database.dart';
+import 'package:my_project_baws/data/database_repository.dart';
 import 'package:my_project_baws/domain/ClothingItem.dart';
 import 'package:my_project_baws/screens/cart_screen.dart';
-import 'package:my_project_baws/screens/database_repository.dart';
 import 'package:my_project_baws/screens/orders_screen.dart';
 import 'package:my_project_baws/screens/product_details_screen.dart';
 import 'package:my_project_baws/screens/profile_screen.dart';
@@ -10,7 +9,7 @@ import 'package:my_project_baws/screens/settings_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final DatabaseRepository databaseRepository;
-  HomeScreen({required this.databaseRepository ,super.key});
+  HomeScreen({required this.databaseRepository, super.key});
   final List<String> productImages = [
     'assets/images/310-00H-5.png',
     'assets/images/305-00H-4.png',
@@ -34,7 +33,8 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CartScreen(databaseRepository)));
+                        builder: (context) => CartScreen(
+                            databaseRepository: databaseRepository)));
               },
             ),
           ],
@@ -96,7 +96,8 @@ class HomeScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) => ProductDetailsScreen(
-                                  products[index], databaseRepository)));
+                                  products[index],
+                                  databaseRepository: databaseRepository)));
                     },
                     child: Card(
                       child: Column(
