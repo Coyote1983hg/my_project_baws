@@ -1,11 +1,9 @@
-import '../inventory_manager.dart';
-import 'database_repository.dart';
 import '../domain/ClothingItem.dart';
-import '../user.dart';
-import '../domain/ShoppingCart.dart';
+import 'database_repository.dart';
 
 class MockDatabase implements DatabaseRepository {
 // mockdaten kommt irgendwann von der DB zurueck
+  @override
   List<ClothingItem> products = [
     ClothingItem(
       id: '1',
@@ -73,30 +71,31 @@ class MockDatabase implements DatabaseRepository {
     )
   ];
   // TODO: Als map schreiben
+  @override
   List<ClothingItem> cart = [];
 // mockfunktionen
   @override
-  Future<List<ClothingItem>> getProducts() async{
-     await Future.delayed(const Duration(seconds: 2));
+  Future<List<ClothingItem>> getProducts() async {
+    await Future.delayed(const Duration(seconds: 2));
     return products;
   }
 
   @override
   Future<List<ClothingItem>> getCart() async {
-     await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     return cart;
   }
 
   @override
-  Future<void> addItemToCart(ClothingItem clothingItem)async {
-     await Future.delayed(const Duration(seconds: 2));
+  Future<void> addItemToCart(ClothingItem clothingItem) async {
+    await Future.delayed(const Duration(seconds: 2));
     // zu cart liste hinzufuegen
     cart.add(clothingItem);
   }
 
   @override
-  Future<void>removeItemFromCart(ClothingItem clothingItem) async{
-     await Future.delayed(const Duration(seconds: 2));
+  Future<void> removeItemFromCart(ClothingItem clothingItem) async {
+    await Future.delayed(const Duration(seconds: 2));
     // zu cart liste entfernen
     cart.remove(clothingItem);
   }

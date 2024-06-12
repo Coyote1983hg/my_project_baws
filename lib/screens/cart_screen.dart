@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/data/mock_database.dart';
+import 'package:my_project_baws/data/database_repository.dart';
 import 'package:my_project_baws/screens/checkout_screen.dart';
-import 'package:my_project_baws/screens/database_repository.dart';
 
 class CartScreen extends StatefulWidget {
   final DatabaseRepository databaseRepository;
 
-  CartScreen( this.databaseRepository);
+  const CartScreen({required this.databaseRepository, super.key});
 
   @override
   _CartScreenState createState() => _CartScreenState();
