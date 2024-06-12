@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project_baws/data/database_repository.dart';
 import 'package:my_project_baws/data/mock_database.dart';
 import 'package:my_project_baws/screens/signin_screen.dart';
 import 'package:my_project_baws/screens/signup_screen.dart';
@@ -7,8 +8,8 @@ import 'package:my_project_baws/widgets/custom_scaffold.dart';
 import 'package:my_project_baws/widgets/welcome_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  MockDatabase mockDatabase;
-  WelcomeScreen(this.mockDatabase, {super.key});
+  final DatabaseRepository databaseRepository;
+   const WelcomeScreen({required this.databaseRepository, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +50,7 @@ class WelcomeScreen extends StatelessWidget {
             alignment: Alignment.bottomRight,
             child: Row(
               children: [
-                 Expanded(
+                Expanded(
                   child: WelcomeButton(
                     buttonText: 'Sign in',
                     onTap: SignInScreen(mockDatabase),
@@ -60,7 +61,7 @@ class WelcomeScreen extends StatelessWidget {
                 Expanded(
                   child: WelcomeButton(
                     buttonText: 'Sign up',
-                    onTap:  SignUpScreen(mockDatabase),
+                    onTap: SignUpScreen(mockDatabase),
                     color: Colors.white,
                     textColor: lightColorScheme.primary,
                   ),
