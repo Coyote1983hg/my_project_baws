@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/data/database_repository.dart';
-import 'package:my_project_baws/domain/ClothingItem.dart';
-import 'package:my_project_baws/screens/cart_screen.dart';
+import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/domain/ClothingItem.dart';
+import 'package:my_project_baws/src/features/shopping/cart_screen.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   // Attribute

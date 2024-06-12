@@ -1,40 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:my_project_baws/data/database_repository.dart';
-import 'package:my_project_baws/screens/signup_screen.dart';
-import 'package:my_project_baws/widgets/custom_scaffold.dart';
+import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/features/shopping/presentation/home_screen.dart';
+import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
+import 'package:my_project_baws/theme/theme.dart';
+import 'package:my_project_baws/src/domain/custom_scaffold.dart';
 
-import '../theme/theme.dart';
-
-class SignInScreen extends StatefulWidget {
+class SignUpScreen extends StatefulWidget {
   final DatabaseRepository databaseRepository;
-  const SignInScreen({required this.databaseRepository, super.key});
+  const SignUpScreen({required this.databaseRepository, super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
-  final _formSignInKey = GlobalKey<FormState>();
-  bool rememberPassword = true;
-  late TextEditingController _emailController;
-  late TextEditingController _pwController;
-  @override
-  void initState() {
-    super.initState();
-    _emailController = TextEditingController();
-    _pwController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _pwController.dispose();
-    super.dispose();
-  }
-
-  bool showPassword = false;
-
+class _SignUpScreenState extends State<SignUpScreen> {
+  // final _formSignupKey = GlobalKey<FormState>();
+  bool agreePersonalData = true;
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
@@ -58,13 +40,15 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ),
               child: SingleChildScrollView(
+                // get started form
                 child: Form(
-                  key: _formSignInKey,
+                  // key: _formSignupKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      // get started text
                       Text(
-                        'Welcome back',
+                        'Get Started',
                         style: TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.w900,
@@ -74,14 +58,45 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(
                         height: 40.0,
                       ),
+                      // full name
                       TextFormField(
-                        controller: _emailController,
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter Email';
-                          }
-                          return null;
-                        },
+                        // validator: (value) {
+                        //   if (value == null || value.isEmpty) {
+                        //     return 'Please enter Full name';
+                        //   }
+                        //   return null;
+                        // },
+                        decoration: InputDecoration(
+                          label: const Text('Full Name'),
+                          hintText: 'Enter Full Name',
+                          hintStyle: const TextStyle(
+                            color: Colors.black26,
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.black12, // Default border color
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.black12, // Default border color
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25.0,
+                      ),
+                      // email
+                      TextFormField(
+                        // validator: (value) {
+                        //   if (value == null || value.isEmpty) {
+                        //     return 'Please enter Email';
+                        //   }
+                        //   return null;
+                        // },
                         decoration: InputDecoration(
                           label: const Text('Email'),
                           hintText: 'Enter Email',
@@ -105,16 +120,16 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(
                         height: 25.0,
                       ),
+                      // password
                       TextFormField(
-                        controller: _pwController,
                         obscureText: true,
                         obscuringCharacter: '*',
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Please enter Password';
-                          }
-                          return null;
-                        },
+                        // validator: (value) {
+                        //   if (value == null || value.isEmpty) {
+                        //     return 'Please enter Password';
+                        //   }
+                        //   return null;
+                        // },
                         decoration: InputDecoration(
                           label: const Text('Password'),
                           hintText: 'Enter Password',
@@ -138,35 +153,29 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(
                         height: 25.0,
                       ),
+                      // i agree to the processing
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Row(
-                            children: [
-                              Checkbox(
-                                value: rememberPassword,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    rememberPassword = value!;
-                                  });
-                                },
-                                activeColor: lightColorScheme.primary,
-                              ),
-                              const Text(
-                                'Remember me',
-                                style: TextStyle(
-                                  color: Colors.black45,
-                                ),
-                              ),
-                            ],
+                          Checkbox(
+                            value: agreePersonalData,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                agreePersonalData = value!;
+                              });
+                            },
+                            activeColor: lightColorScheme.primary,
                           ),
-                          GestureDetector(
-                            child: Text(
-                              'Forget password?',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: lightColorScheme.primary,
-                              ),
+                          const Text(
+                            'I agree to the processing of ',
+                            style: TextStyle(
+                              color: Colors.black45,
+                            ),
+                          ),
+                          Text(
+                            'Personal data',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: lightColorScheme.primary,
                             ),
                           ),
                         ],
@@ -174,31 +183,40 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(
                         height: 25.0,
                       ),
+                      // signup button
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            if (_formSignInKey.currentState!.validate() &&
-                                rememberPassword) {
+                            if (/*_formSignupKey.currentState!.validate() &&*/
+                                agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Processing Data'),
                                 ),
                               );
-                            } else if (!rememberPassword) {
+                            } else if (!agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
                                         'Please agree to the processing of personal data')),
                               );
                             }
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => HomeScreen(
+                                          databaseRepository:
+                                              widget.databaseRepository,
+                                        )));
                           },
                           child: const Text('Sign up'),
                         ),
                       ),
                       const SizedBox(
-                        height: 25.0,
+                        height: 30.0,
                       ),
+                      // sign up divider
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -229,8 +247,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         ],
                       ),
                       const SizedBox(
-                        height: 25.0,
+                        height: 30.0,
                       ),
+                      // sign up social media logo
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -241,12 +260,12 @@ class _SignInScreenState extends State<SignInScreen> {
                       const SizedBox(
                         height: 25.0,
                       ),
-                      // don't have an account
+                      // already have an account
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
-                            'Don\'t have an account? ',
+                            'Already have an account? ',
                             style: TextStyle(
                               color: Colors.black45,
                             ),
@@ -256,14 +275,14 @@ class _SignInScreenState extends State<SignInScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (e) => SignUpScreen(
+                                  builder: (e) => SignInScreen(
                                       databaseRepository:
                                           widget.databaseRepository),
                                 ),
                               );
                             },
                             child: Text(
-                              'Sign up',
+                              'Sign in',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: lightColorScheme.primary,

@@ -1,8 +1,8 @@
-import 'order.dart';
-import 'domain/ShoppingCart.dart';
+import '../../order.dart';
+import 'ShoppingCart.dart';
 import 'customer.dart';
 import 'inventory_manager.dart';
-import 'domain/ClothingItem.dart';
+import 'ClothingItem.dart';
 // Order Manager class
 class OrderManager {
   final List<Order> _orders = [];

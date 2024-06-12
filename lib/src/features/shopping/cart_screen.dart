@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/data/database_repository.dart';
-import 'package:my_project_baws/screens/checkout_screen.dart';
+import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/features/shopping/presentation/checkout_screen.dart';
 
 class CartScreen extends StatefulWidget {
   final DatabaseRepository databaseRepository;

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/screens/settings_screen.dart';
+import 'package:my_project_baws/src/features/profilesettings/presentation/settings_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override

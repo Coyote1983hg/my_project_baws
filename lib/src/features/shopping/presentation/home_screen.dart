@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/data/database_repository.dart';
-import 'package:my_project_baws/domain/ClothingItem.dart';
-import 'package:my_project_baws/screens/cart_screen.dart';
-import 'package:my_project_baws/screens/orders_screen.dart';
-import 'package:my_project_baws/screens/product_details_screen.dart';
-import 'package:my_project_baws/screens/profile_screen.dart';
-import 'package:my_project_baws/screens/settings_screen.dart';
+import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/domain/ClothingItem.dart';
+import 'package:my_project_baws/src/features/shopping/cart_screen.dart';
+import 'package:my_project_baws/src/features/shopping/presentation/orders_screen.dart';
+import 'package:my_project_baws/src/features/shopping/presentation/product_details_screen.dart';
+import 'package:my_project_baws/src/features/profilesettings/presentation/profile_screen.dart';
+import 'package:my_project_baws/src/features/profilesettings/presentation/settings_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final DatabaseRepository databaseRepository;

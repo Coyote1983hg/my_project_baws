@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/data/database_repository.dart';
-import 'package:my_project_baws/screens/signin_screen.dart';
-import 'package:my_project_baws/screens/signup_screen.dart';
+import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
+import 'package:my_project_baws/src/features/authentification/presentation/signup_screen.dart';
 import 'package:my_project_baws/theme/theme.dart';
-import 'package:my_project_baws/widgets/custom_scaffold.dart';
-import 'package:my_project_baws/widgets/welcome_button.dart';
+import 'package:my_project_baws/src/domain/custom_scaffold.dart';
+import 'package:my_project_baws/src/domain/welcome_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   final DatabaseRepository databaseRepository;

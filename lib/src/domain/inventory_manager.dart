@@ -1,4 +1,4 @@
-import 'domain/ClothingItem.dart';
+import 'ClothingItem.dart';
 // Inventory Manager class
 class InventoryManager {
   final Map<String, ClothingItem> _inventory = {};

@@ -1,8 +1,8 @@
 
-import 'domain/ShoppingCart.dart';
+import 'ShoppingCart.dart';
 
 
-import 'domain/ClothingItem.dart';
+import 'ClothingItem.dart';
 // Order Manager class
 
 
