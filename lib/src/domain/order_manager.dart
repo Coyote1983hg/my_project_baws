@@ -1,8 +1,10 @@
-import '../../order.dart';
+import 'package:my_project_baws/src/domain/Order.dart';
+
+import 'ClothingItem.dart';
 import 'ShoppingCart.dart';
 import 'customer.dart';
 import 'inventory_manager.dart';
-import 'ClothingItem.dart';
+
 // Order Manager class
 class OrderManager {
   final List<Order> _orders = [];

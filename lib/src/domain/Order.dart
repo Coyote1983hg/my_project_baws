@@ -1,5 +1,6 @@
-import 'src/domain/ClothingItem.dart';
-import 'src/domain/customer.dart';
+import 'ClothingItem.dart';
+import 'customer.dart';
+
 // Order class
 class Order {
   final String id;
