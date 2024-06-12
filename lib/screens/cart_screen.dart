@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_baws/data/mock_database.dart';
 import 'package:my_project_baws/screens/checkout_screen.dart';
+import 'package:my_project_baws/screens/database_repository.dart';
 
 class CartScreen extends StatefulWidget {
-  MockDatabase mockDB;
+  final DatabaseRepository databaseRepository;
 
-  CartScreen(this.mockDB);
-
-  
+  CartScreen( this.databaseRepository);
 
   @override
   _CartScreenState createState() => _CartScreenState();
 }
 
 class _CartScreenState extends State<CartScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,14 +20,14 @@ class _CartScreenState extends State<CartScreen> {
         title: const Text('Cart'),
       ),
       body: ListView.builder(
-        itemCount: widget.mockDB.cart.length,
+        itemCount: widget.databaseRepository.cart.length,
         itemBuilder: (context, index) {
           return ListTile(
             leading: Image.asset(
-              widget.mockDB.cart[index].imagePath,
+              widget.databaseRepository.cart[index].imagePath,
               fit: BoxFit.cover,
             ),
-            title: Text(widget.mockDB.cart[index].name),
+            title: Text(widget.databaseRepository.cart[index].name),
             // subtitle: Text('EUR${cart[index]['price'].toStringAsFixed(2)}'),
             // trailing: Row(
             //   mainAxisSize: MainAxisSize.min,

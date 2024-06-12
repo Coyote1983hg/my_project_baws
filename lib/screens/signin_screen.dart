@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:my_project_baws/data/mock_database.dart';
+import 'package:my_project_baws/data/database_repository.dart';
 import 'package:my_project_baws/screens/signup_screen.dart';
 import 'package:my_project_baws/widgets/custom_scaffold.dart';
 
 import '../theme/theme.dart';
 
 class SignInScreen extends StatefulWidget {
-  MockDatabase mockDB;
-  SignInScreen(this.mockDB, {super.key});
+  final DatabaseRepository databaseRepository;
+  const SignInScreen({required this.databaseRepository, super.key});
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -32,7 +32,8 @@ class _SignInScreenState extends State<SignInScreen> {
     _pwController.dispose();
     super.dispose();
   }
-   bool showPassword = false;
+
+  bool showPassword = false;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +76,6 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       TextFormField(
                         controller: _emailController,
-                        
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter Email';
@@ -106,8 +106,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         height: 25.0,
                       ),
                       TextFormField(
-                           controller: _pwController,
-                           
+                        controller: _pwController,
                         obscureText: true,
                         obscuringCharacter: '*',
                         validator: (value) {
@@ -257,7 +256,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (e) => SignUpScreen(widget.mockDB),
+                                  builder: (e) =>
+                                      SignUpScreen(widget.databaseRepository),
                                 ),
                               );
                             },
