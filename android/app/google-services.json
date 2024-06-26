@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "169127693044",
+    "project_id": "my-project-baws",
+    "storage_bucket": "my-project-baws.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169127693044:android:7eeae60570b49064b6eca1",
+        "android_client_info": {
+          "package_name": "com.example.my_project_baws"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCseuccEZsZhlesVhRkg8B5sNxe_taP3B0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
