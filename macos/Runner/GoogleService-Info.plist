@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyBwCR1kL4IzI5AGyOk4-ZOnc6nL-pd30Fs</string>
+	<string>AIzaSyD_ZuuQQIOyLHy8rayu9NksQPGoQt2C_Z4</string>
 	<key>GCM_SENDER_ID</key>
-	<string>169127693044</string>
+	<string>656510254</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.example.myProjectBaws</string>
 	<key>PROJECT_ID</key>
-	<string>my-project-baws</string>
+	<string>my-projekt-baws</string>
 	<key>STORAGE_BUCKET</key>
-	<string>my-project-baws.appspot.com</string>
+	<string>my-projekt-baws.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:169127693044:ios:fe98969b06ae2881b6eca1</string>
+	<string>1:656510254:ios:bae86b4bdac51fc4ce3ebf</string>
 </dict>
 </plist>

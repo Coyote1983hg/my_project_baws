@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "169127693044",
-    "project_id": "my-project-baws",
-    "storage_bucket": "my-project-baws.appspot.com"
+    "project_number": "656510254",
+    "project_id": "my-projekt-baws",
+    "storage_bucket": "my-projekt-baws.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:169127693044:android:7eeae60570b49064b6eca1",
+        "mobilesdk_app_id": "1:656510254:android:6c9156f80c16ceecce3ebf",
         "android_client_info": {
           "package_name": "com.example.my_project_baws"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCseuccEZsZhlesVhRkg8B5sNxe_taP3B0"
+          "current_key": "AIzaSyAqoBHbAs1S1CJi6zqaREDLuUaDOoMuNUg"
         }
       ],
       "services": {

@@ -41,46 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAxpjeiujVJszMrVBevj-VDcU49THOhTGs',
-    appId: '1:169127693044:web:50b3f4a07fc3deadb6eca1',
-    messagingSenderId: '169127693044',
-    projectId: 'my-project-baws',
-    authDomain: 'my-project-baws.firebaseapp.com',
-    storageBucket: 'my-project-baws.appspot.com',
+    apiKey: 'AIzaSyB5DlxwlY5-7aBasQ3fr19Ab7iRfvgMdCE',
+    appId: '1:656510254:web:3db4e1927544c09cce3ebf',
+    messagingSenderId: '656510254',
+    projectId: 'my-projekt-baws',
+    authDomain: 'my-projekt-baws.firebaseapp.com',
+    storageBucket: 'my-projekt-baws.appspot.com',
+    measurementId: 'G-9PZNQHWV5F',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCseuccEZsZhlesVhRkg8B5sNxe_taP3B0',
-    appId: '1:169127693044:android:7eeae60570b49064b6eca1',
-    messagingSenderId: '169127693044',
-    projectId: 'my-project-baws',
-    storageBucket: 'my-project-baws.appspot.com',
+    apiKey: 'AIzaSyAqoBHbAs1S1CJi6zqaREDLuUaDOoMuNUg',
+    appId: '1:656510254:android:6c9156f80c16ceecce3ebf',
+    messagingSenderId: '656510254',
+    projectId: 'my-projekt-baws',
+    storageBucket: 'my-projekt-baws.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBwCR1kL4IzI5AGyOk4-ZOnc6nL-pd30Fs',
-    appId: '1:169127693044:ios:fe98969b06ae2881b6eca1',
-    messagingSenderId: '169127693044',
-    projectId: 'my-project-baws',
-    storageBucket: 'my-project-baws.appspot.com',
+    apiKey: 'AIzaSyD_ZuuQQIOyLHy8rayu9NksQPGoQt2C_Z4',
+    appId: '1:656510254:ios:bae86b4bdac51fc4ce3ebf',
+    messagingSenderId: '656510254',
+    projectId: 'my-projekt-baws',
+    storageBucket: 'my-projekt-baws.appspot.com',
     iosBundleId: 'com.example.myProjectBaws',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyBwCR1kL4IzI5AGyOk4-ZOnc6nL-pd30Fs',
-    appId: '1:169127693044:ios:fe98969b06ae2881b6eca1',
-    messagingSenderId: '169127693044',
-    projectId: 'my-project-baws',
-    storageBucket: 'my-project-baws.appspot.com',
+    apiKey: 'AIzaSyD_ZuuQQIOyLHy8rayu9NksQPGoQt2C_Z4',
+    appId: '1:656510254:ios:bae86b4bdac51fc4ce3ebf',
+    messagingSenderId: '656510254',
+    projectId: 'my-projekt-baws',
+    storageBucket: 'my-projekt-baws.appspot.com',
     iosBundleId: 'com.example.myProjectBaws',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyAxpjeiujVJszMrVBevj-VDcU49THOhTGs',
-    appId: '1:169127693044:web:54df06f0233f161db6eca1',
-    messagingSenderId: '169127693044',
-    projectId: 'my-project-baws',
-    authDomain: 'my-project-baws.firebaseapp.com',
-    storageBucket: 'my-project-baws.appspot.com',
+    apiKey: 'AIzaSyB5DlxwlY5-7aBasQ3fr19Ab7iRfvgMdCE',
+    appId: '1:656510254:web:75af8975d34831adce3ebf',
+    messagingSenderId: '656510254',
+    projectId: 'my-projekt-baws',
+    authDomain: 'my-projekt-baws.firebaseapp.com',
+    storageBucket: 'my-projekt-baws.appspot.com',
+    measurementId: 'G-36J4QFQ627',
   );
+
 }

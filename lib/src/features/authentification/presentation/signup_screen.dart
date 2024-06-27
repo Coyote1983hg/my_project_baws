@@ -1,20 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
-import 'package:my_project_baws/src/features/shopping/presentation/home_screen.dart';
-import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
-import 'package:my_project_baws/theme/theme.dart';
 import 'package:my_project_baws/src/domain/custom_scaffold.dart';
+import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
+import 'package:my_project_baws/src/features/shopping/presentation/home_screen.dart';
+import 'package:my_project_baws/theme/theme.dart';
 
 class SignUpScreen extends StatefulWidget {
   final DatabaseRepository databaseRepository;
-  const SignUpScreen({required this.databaseRepository, super.key});
+  final AuthRepository authRepository;
+  const SignUpScreen(
+      {required this.databaseRepository,
+      super.key,
+      required this.authRepository});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  late TextEditingController _emailController;
+  late TextEditingController _pwController;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _emailController = TextEditingController();
+    _pwController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _pwController.dispose();
+
+    super.dispose();
+  }
+
   // final _formSignupKey = GlobalKey<FormState>();
   bool agreePersonalData = true;
   @override
@@ -91,6 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       // email
                       TextFormField(
+                        controller: _emailController,
                         // validator: (value) {
                         //   if (value == null || value.isEmpty) {
                         //     return 'Please enter Email';
@@ -122,6 +147,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       // password
                       TextFormField(
+                        controller: _pwController,
                         obscureText: true,
                         obscuringCharacter: '*',
                         // validator: (value) {
@@ -187,7 +213,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (/*_formSignupKey.currentState!.validate() &&*/
                                 agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -202,6 +228,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         'Please agree to the processing of personal data')),
                               );
                             }
+                            await widget.authRepository
+                                .signUpWithEmailAndPassword(
+                                    _emailController.text, _pwController.text);
+
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -276,8 +306,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (e) => SignInScreen(
-                                      databaseRepository:
-                                          widget.databaseRepository),
+                                    databaseRepository:
+                                        widget.databaseRepository,
+                                    authRepository: widget.authRepository,
+                                  ),
                                 ),
                               );
                             },

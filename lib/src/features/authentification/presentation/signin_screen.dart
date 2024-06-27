@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
-import 'package:my_project_baws/src/features/authentification/presentation/signup_screen.dart';
 import 'package:my_project_baws/src/domain/custom_scaffold.dart';
+import 'package:my_project_baws/src/features/authentification/presentation/signup_screen.dart';
 
 import '../../../../theme/theme.dart';
 
 class SignInScreen extends StatefulWidget {
   final DatabaseRepository databaseRepository;
-  const SignInScreen({required this.databaseRepository, super.key});
+  final AuthRepository authRepository;
+  const SignInScreen(
+      {required this.databaseRepository,
+      super.key,
+      required this.authRepository});
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -177,7 +182,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (_formSignInKey.currentState!.validate() &&
                                 rememberPassword) {
                               ScaffoldMessenger.of(context).showSnackBar(
@@ -192,8 +197,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                         'Please agree to the processing of personal data')),
                               );
                             }
+
+                            await widget.authRepository
+                                .loginWithEmailAndPassword(
+                                    _emailController.text, _pwController.text);
                           },
-                          child: const Text('Sign up'),
+                          child: const Text('Sign in'),
                         ),
                       ),
                       const SizedBox(
@@ -258,7 +267,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 MaterialPageRoute(
                                   builder: (e) => SignUpScreen(
                                       databaseRepository:
-                                          widget.databaseRepository),
+                                          widget.databaseRepository, authRepository: widget.authRepository,),
                                 ),
                               );
                             },
