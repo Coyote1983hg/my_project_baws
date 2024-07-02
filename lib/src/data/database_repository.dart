@@ -1,4 +1,4 @@
-import 'package:my_project_baws/src/domain/ClothingItem.dart';
+import 'package:my_project_baws/src/domain/clothingItem.dart';
 
 abstract class DatabaseRepository {
   late List<ClothingItem> products;

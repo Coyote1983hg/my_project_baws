@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
-import 'package:my_project_baws/src/domain/ClothingItem.dart';
+import 'package:my_project_baws/src/domain/clothingItem.dart';
 import 'package:my_project_baws/src/features/shopping/cart_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/orders_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/product_details_screen.dart';

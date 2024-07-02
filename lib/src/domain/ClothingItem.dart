@@ -1,11 +1,9 @@
-// Clothing Item class
 class ClothingItem {
   final String id;
   final String name;
   final String description;
   final double price;
   final String color;
-  // TODO: add image as attribute, zb. String path  = 'assets/images/300-00H-4.jpg'
   final String imagePath;
   int quantity;
 
@@ -18,4 +16,30 @@ class ClothingItem {
     required this.imagePath,
     this.quantity = 1,
   });
+
+  // Metoda factory pentru crearea unui ClothingItem dintr-un Map
+  factory ClothingItem.fromMap(Map<String, dynamic> map) {
+    return ClothingItem(
+      id: map['id'] as String,
+      name: map['name'] as String,
+      description: map['description'] as String,
+      price: (map['price'] as num).toDouble(),
+      color: map['color'] as String,
+      imagePath: map['imagePath'] as String,
+      quantity: map['quantity'] as int? ?? 1,
+    );
+  }
+
+  // Metoda pentru convertirea unui ClothingItem într-un Map
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'price': price,
+      'color': color,
+      'imagePath': imagePath,
+      'quantity': quantity,
+    };
+  }
 }

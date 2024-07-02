@@ -1,3 +1,5 @@
+import 'dart:core';
+
 class Product {
   final String id;
   final String name;
@@ -14,4 +16,26 @@ class Product {
     required this.color,
     required this.imagePath,
   });
+
+  factory Product.fromMap(Map<String, dynamic> map) {
+    return Product(
+      id: map["id"],
+      name: map["name"],
+      description: map["description"],
+      price: map["price"],
+      color: map["color"],
+      imagePath: map["imagePath"],
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'price': price,
+      'color': color,
+      'imagePath': imagePath,
+    };
+  }
 }

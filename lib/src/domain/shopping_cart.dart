@@ -1,4 +1,4 @@
-import 'ClothingItem.dart';
+import 'clothingItem.dart';
 class ShoppingCart {
   final List<ClothingItem> items = [];
 
@@ -28,4 +28,3 @@ class ShoppingCart {
     );
   }
 }
-

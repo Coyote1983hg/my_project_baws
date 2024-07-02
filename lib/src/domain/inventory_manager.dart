@@ -1,4 +1,4 @@
-import 'ClothingItem.dart';
+import 'clothingItem.dart';
 // Inventory Manager class
 class InventoryManager {
   final Map<String, ClothingItem> _inventory = {};

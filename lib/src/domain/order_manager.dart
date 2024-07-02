@@ -1,7 +1,7 @@
-import 'package:my_project_baws/src/domain/Order.dart';
+import 'package:my_project_baws/src/domain/order.dart';
 
-import 'ClothingItem.dart';
-import 'ShoppingCart.dart';
+import 'clothingItem.dart';
+import 'shopping_cart.dart';
 import 'customer.dart';
 import 'inventory_manager.dart';
 
