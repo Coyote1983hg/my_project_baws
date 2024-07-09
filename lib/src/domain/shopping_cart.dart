@@ -1,4 +1,4 @@
-import 'clothingItem.dart';
+import 'clothing_Item.dart';
 class ShoppingCart {
   final List<ClothingItem> items = [];
 
@@ -27,4 +27,6 @@ class ShoppingCart {
       (sum, item) => sum + (item.price * item.quantity),
     );
   }
+
+  
 }

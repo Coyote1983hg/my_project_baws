@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
-import 'package:my_project_baws/src/domain/clothingItem.dart';
+import 'package:my_project_baws/src/domain/clothing_Item.dart';
 import 'package:my_project_baws/src/features/shopping/cart_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/orders_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/product_details_screen.dart';
 import 'package:my_project_baws/src/features/profilesettings/presentation/profile_screen.dart';
 import 'package:my_project_baws/src/features/profilesettings/presentation/settings_screen.dart';
 
+import '../../../data/firestore_database.dart';
+
 class HomeScreen extends StatelessWidget {
-  final DatabaseRepository databaseRepository;
+  final FirestoreDatabase databaseRepository;
   HomeScreen({required this.databaseRepository, super.key});
   final List<String> productImages = [
     'assets/images/310-00H-5.png',
@@ -23,6 +25,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = databaseRepository.userRepository.user;
+
     return Scaffold(
         appBar: AppBar(
           title: const Text('WawBaws'),

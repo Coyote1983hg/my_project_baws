@@ -7,6 +7,8 @@ import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
 import 'package:my_project_baws/src/data/mock_database.dart';
 
+import 'src/data/firestore_database.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -14,7 +16,7 @@ Future<void> main() async {
   );
 
   // Database einmal an der Wurzel erzeugt
-  DatabaseRepository databaseRepository = MockDatabase();
+  FirestoreDatabase databaseRepository = FirestoreDatabase();
   AuthRepository authRepository = AuthRepository(FirebaseAuth.instance);
 
   runApp(App(

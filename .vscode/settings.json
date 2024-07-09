@@ -79,7 +79,7 @@
         "**/*.freezed.dart": true,
         "**/*.g.dart": true
     },
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "debug.toolBarLocation": "commandCenter",
     "explorer.compactFolders": false,
     "terminal.integrated.enableMultiLinePasteWarning": false,

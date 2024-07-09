@@ -7,10 +7,15 @@ import 'package:my_project_baws/theme/theme.dart';
 import 'package:my_project_baws/src/domain/custom_scaffold.dart';
 import 'package:my_project_baws/src/domain/welcome_button.dart';
 
+import '../../../data/firestore_database.dart';
+
 class WelcomeScreen extends StatelessWidget {
-  final DatabaseRepository databaseRepository;
+  final FirestoreDatabase databaseRepository;
   final AuthRepository authRepository;
-  const WelcomeScreen({required this.databaseRepository, super.key, required this.authRepository});
+  const WelcomeScreen(
+      {required this.databaseRepository,
+      super.key,
+      required this.authRepository});
 
   @override
   Widget build(BuildContext context) {
@@ -66,7 +71,8 @@ class WelcomeScreen extends StatelessWidget {
                   child: WelcomeButton(
                     buttonText: 'Sign up',
                     onTap: SignUpScreen(
-                      databaseRepository: databaseRepository, authRepository: authRepository,
+                      databaseRepository: databaseRepository,
+                      authRepository: authRepository,
                     ),
                     color: Colors.white,
                     textColor: lightColorScheme.primary,

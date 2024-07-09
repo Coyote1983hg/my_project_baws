@@ -3,12 +3,16 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
 import 'package:my_project_baws/src/domain/custom_scaffold.dart';
+import 'package:my_project_baws/src/domain/user.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/home_screen.dart';
 import 'package:my_project_baws/theme/theme.dart';
 
+import '../../../data/firestore_database.dart';
+import '../../../domain/shopping_cart.dart';
+
 class SignUpScreen extends StatefulWidget {
-  final DatabaseRepository databaseRepository;
+  final FirestoreDatabase databaseRepository;
   final AuthRepository authRepository;
   const SignUpScreen(
       {required this.databaseRepository,
@@ -22,6 +26,8 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   late TextEditingController _emailController;
   late TextEditingController _pwController;
+  late TextEditingController _nameController;
+  late TextEditingController _ageController;
 
   @override
   void initState() {
@@ -29,6 +35,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.initState();
     _emailController = TextEditingController();
     _pwController = TextEditingController();
+    _nameController = TextEditingController();
+    _ageController = TextEditingController();
   }
 
   @override
@@ -90,9 +98,43 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         //   }
                         //   return null;
                         // },
+                        controller: _nameController,
                         decoration: InputDecoration(
                           label: const Text('Full Name'),
                           hintText: 'Enter Full Name',
+                          hintStyle: const TextStyle(
+                            color: Colors.black26,
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.black12, // Default border color
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: const BorderSide(
+                              color: Colors.black12, // Default border color
+                            ),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 25.0,
+                      ),
+                      // full name
+                      TextFormField(
+                        // validator: (value) {
+                        //   if (value == null || value.isEmpty) {
+                        //     return 'Please enter Full name';
+                        //   }
+                        //   return null;
+                        // },
+                        keyboardType: TextInputType.number,
+                        controller: _ageController,
+                        decoration: InputDecoration(
+                          label: const Text('Age'),
+                          hintText: 'Enter your Age',
                           hintStyle: const TextStyle(
                             color: Colors.black26,
                           ),
@@ -228,17 +270,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         'Please agree to the processing of personal data')),
                               );
                             }
+
+                            // Registrieren bei Firebase Authentication
                             await widget.authRepository
                                 .signUpWithEmailAndPassword(
                                     _emailController.text, _pwController.text);
 
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => HomeScreen(
-                                          databaseRepository:
-                                              widget.databaseRepository,
-                                        )));
+                            // Holen uns den Firebase User
+                            final firebaseUser =
+                                widget.authRepository.getCurrentUser();
+
+                            if (firebaseUser != null) {
+                              // Erstellen unsere Custom User
+                              final user = User(
+                                  id: firebaseUser!.uid,
+                                  name: _nameController.text,
+                                  age: int.parse(
+                                      _ageController.text), // String to Int
+                                  cart: ShoppingCart());
+
+                              // Füge User in Firestore
+                              await widget.databaseRepository.userRepository
+                                  .createUserInFirestore(user);
+
+                              
+                            }
                           },
                           child: const Text('Sign up'),
                         ),

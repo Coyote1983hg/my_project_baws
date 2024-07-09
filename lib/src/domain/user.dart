@@ -1,4 +1,4 @@
-import 'clothingItem.dart';
+import 'clothing_Item.dart';
 import 'shopping_cart.dart';
 
 class User {
@@ -27,7 +27,7 @@ class User {
       'id': id,
       'name': name,
       'age': age,
-      'cart': cart,
+      
     };
   }
 

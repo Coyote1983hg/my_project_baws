@@ -1,4 +1,4 @@
-import '../domain/clothingItem.dart';
+import '../domain/clothing_Item.dart';
 import 'database_repository.dart';
 
 class MockDatabase implements DatabaseRepository {

@@ -24,6 +24,8 @@ class AuthRepository {
     return _firebaseAuth.currentUser;
   }
 
+
+
   Future<void> signUpWithEmailAndPassword(String email, String pw) {
     return _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: pw);

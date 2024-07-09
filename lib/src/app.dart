@@ -2,6 +2,7 @@ import 'package:flex_color_scheme/flex_color_scheme.dart';
 import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/data/firestore_database.dart';
 import 'package:my_project_baws/src/data/mock_database.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/welcome_screen.dart';
@@ -9,7 +10,7 @@ import 'package:my_project_baws/src/features/authentification/presentation/welco
 // die Wurzel unseres Widgets-Tree
 // (besteht aus nur einem MaterialApp-Widget)
 class App extends StatelessWidget {
-  final DatabaseRepository databaseRepository;
+  final FirestoreDatabase databaseRepository;
   final AuthRepository authRepository;
 
   const App(
@@ -19,7 +20,6 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DatabaseRepository databaseRepository = MockDatabase();
     const signinKey = ValueKey('signinScreen');
     const welcomeKey = ValueKey('welcomeScreen');
     return StreamBuilder(
