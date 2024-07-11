@@ -6,7 +6,6 @@ class UserRepository {
 
   UserRepository(this.instance);
 
-
   User? user;
 
   // Bei SignUp (User noch nicht in Firestore!)
@@ -17,21 +16,23 @@ class UserRepository {
 
   // Bei SignIn (Weil User ist bei Firebase Authentication schon drin!!)
   Future<void> getUserFromFirestore(String uid) async {
-    // Holen unser custom User von Firestore
-    final doc = await instance.collection("users").doc(uid).get();
-    User? user;
+    try {
+      // Holen unser custom User von Firestore
+      final doc = await instance.collection("users").doc(uid).get();
+      User? user;
 
-    // Wenn das Document in Firestore existiert
-    if (doc.exists) {
+      // Wenn das Document in Firestore existiert
+      if (doc.exists) {
+        // Parse Data to Map
+        final map = doc.data()!;
 
-      // Parse Data to Map
-      final map = doc.data()!;
+        // Create User Instance from map
+        user = User.fromMap(map);
 
-      // Create User Instance from map
-      user = User.fromMap(map);
-
-      this.user = user;
+        this.user = user;
+      }
+    } catch (e) {
+      print(e);
     }
-    
   }
 }

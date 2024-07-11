@@ -91,4 +91,9 @@
     "files.readonlyInclude": {
         "{**/.c4z/.extsrcs/*.PROTSYM.cbl,**/.c4z/.extsrcs/*.PROTSYM.listing}": true
     },
+    "liveshare.allowGuestDebugControl": true,
+    "liveshare.allowGuestTaskControl": true,
+    "liveshare.languages.allowGuestCommandControl": true,
+    "liveshare.openSharedServers": false,
+    "liveshare.publishWorkspaceInfo": true,
 }

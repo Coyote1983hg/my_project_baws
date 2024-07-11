@@ -1,17 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:my_project_baws/src/data/user_repository.dart';
-import 'package:my_project_baws/src/domain/cart.dart';
 import 'package:my_project_baws/src/domain/clothing_Item.dart';
 
 import 'database_repository.dart';
 
 class FirestoreDatabase implements DatabaseRepository {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-  final UserRepository userRepository =  UserRepository(FirebaseFirestore.instance);
-
-
-
 
   @override
   List<ClothingItem> cart = [];

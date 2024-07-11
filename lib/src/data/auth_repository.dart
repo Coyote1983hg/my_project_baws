@@ -24,15 +24,21 @@ class AuthRepository {
     return _firebaseAuth.currentUser;
   }
 
-
-
   Future<void> signUpWithEmailAndPassword(String email, String pw) {
     return _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: pw);
   }
 
-  Future<void> loginWithEmailAndPassword(String email, String pw) {
-    return _firebaseAuth.signInWithEmailAndPassword(email: email, password: pw);
+  Future<void> loginWithEmailAndPassword(String email, String pw) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: pw);
+      print("Logged in");
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+    } catch (e) {
+      print(e);
+    }
   }
 
   Future<void> logout() {

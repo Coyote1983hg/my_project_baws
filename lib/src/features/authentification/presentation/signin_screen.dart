@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
-import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/data/user_repository.dart';
 import 'package:my_project_baws/src/domain/custom_scaffold.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signup_screen.dart';
-import 'package:my_project_baws/src/features/shopping/presentation/home_screen.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../theme/theme.dart';
-import '../../../data/firestore_database.dart';
 
 class SignInScreen extends StatefulWidget {
-  final FirestoreDatabase databaseRepository;
-  final AuthRepository authRepository;
-  const SignInScreen(
-      {required this.databaseRepository,
-      super.key,
-      required this.authRepository});
+  const SignInScreen({super.key});
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -44,6 +38,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authRepository = context.read<AuthRepository>();
+    final userRepository = context.read<UserRepository>();
     return CustomScaffold(
       child: Column(
         children: [
@@ -201,20 +197,17 @@ class _SignInScreenState extends State<SignInScreen> {
                             }
 
                             // SignIn in Firebase Authentication
-                            await widget.authRepository
-                                .loginWithEmailAndPassword(
-                                    _emailController.text, _pwController.text);
+                            await authRepository.loginWithEmailAndPassword(
+                                _emailController.text, _pwController.text);
 
                             // Wenn EMail und Passwort richtig sind, dann holen wir uns den Firebase User
-                            final user = widget.authRepository.getCurrentUser();
+                            final user = authRepository.getCurrentUser();
 
                             // Überprüfen ob User nicht null ist
-                            if (user != null) {
+                            if (user != null ) {
                               // Holen uns den User aus Firestore mit Firebase Authentication User Id
-                              await widget.databaseRepository.userRepository
+                              await userRepository
                                   .getUserFromFirestore(user.uid);
-
-                              
                             }
                           },
                           child: const Text('Sign in'),
@@ -280,11 +273,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (e) => SignUpScreen(
-                                    databaseRepository:
-                                        widget.databaseRepository,
-                                    authRepository: widget.authRepository,
-                                  ),
+                                  builder: (e) => const SignUpScreen(),
                                 ),
                               );
                             },

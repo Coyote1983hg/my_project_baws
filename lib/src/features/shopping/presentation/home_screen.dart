@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/data/user_repository.dart';
 import 'package:my_project_baws/src/domain/clothing_Item.dart';
+import 'package:my_project_baws/src/features/profilesettings/presentation/profile_screen.dart';
+import 'package:my_project_baws/src/features/profilesettings/presentation/settings_screen.dart';
 import 'package:my_project_baws/src/features/shopping/cart_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/orders_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/product_details_screen.dart';
-import 'package:my_project_baws/src/features/profilesettings/presentation/profile_screen.dart';
-import 'package:my_project_baws/src/features/profilesettings/presentation/settings_screen.dart';
+import 'package:provider/provider.dart';
 
-import '../../../data/firestore_database.dart';
+import '../../../data/database_repository.dart';
 
 class HomeScreen extends StatelessWidget {
-  final FirestoreDatabase databaseRepository;
-  HomeScreen({required this.databaseRepository, super.key});
+  HomeScreen({super.key});
   final List<String> productImages = [
     'assets/images/310-00H-5.png',
     'assets/images/305-00H-4.png',
@@ -25,7 +25,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = databaseRepository.userRepository.user;
+    final userRepository = context.read<UserRepository>();
+    final databaseRepository = context.read<DatabaseRepository>();
+    final user = userRepository.user;
 
     return Scaffold(
         appBar: AppBar(
@@ -37,8 +39,7 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => CartScreen(
-                            databaseRepository: databaseRepository)));
+                        builder: (context) => const CartScreen()));
               },
             ),
           ],

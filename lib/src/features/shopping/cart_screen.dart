@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/checkout_screen.dart';
+import 'package:provider/provider.dart';
 
 class CartScreen extends StatefulWidget {
-  final DatabaseRepository databaseRepository;
-
-  const CartScreen({required this.databaseRepository, super.key});
+  const CartScreen({super.key});
 
   @override
   _CartScreenState createState() => _CartScreenState();
@@ -14,19 +13,20 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
+    final databaseRepository = context.read<DatabaseRepository>();
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cart'),
       ),
       body: ListView.builder(
-        itemCount: widget.databaseRepository.cart.length,
+        itemCount: databaseRepository.cart.length,
         itemBuilder: (context, index) {
           return ListTile(
             leading: Image.asset(
-              widget.databaseRepository.cart[index].imagePath,
+              databaseRepository.cart[index].imagePath,
               fit: BoxFit.cover,
             ),
-            title: Text(widget.databaseRepository.cart[index].name),
+            title: Text(databaseRepository.cart[index].name),
             // subtitle: Text('EUR${cart[index]['price'].toStringAsFixed(2)}'),
             // trailing: Row(
             //   mainAxisSize: MainAxisSize.min,

@@ -1,23 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
-import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/data/user_repository.dart';
 import 'package:my_project_baws/src/domain/custom_scaffold.dart';
 import 'package:my_project_baws/src/domain/user.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
-import 'package:my_project_baws/src/features/shopping/presentation/home_screen.dart';
 import 'package:my_project_baws/theme/theme.dart';
+import 'package:provider/provider.dart';
 
-import '../../../data/firestore_database.dart';
 import '../../../domain/shopping_cart.dart';
 
 class SignUpScreen extends StatefulWidget {
-  final FirestoreDatabase databaseRepository;
-  final AuthRepository authRepository;
-  const SignUpScreen(
-      {required this.databaseRepository,
-      super.key,
-      required this.authRepository});
+  const SignUpScreen({super.key});
 
   @override
   State<SignUpScreen> createState() => _SignUpScreenState();
@@ -51,6 +45,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool agreePersonalData = true;
   @override
   Widget build(BuildContext context) {
+    final authRepository = context.read<AuthRepository>();
+    final userRepository = context.read<UserRepository>();
     return CustomScaffold(
       child: Column(
         children: [
@@ -272,28 +268,24 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             }
 
                             // Registrieren bei Firebase Authentication
-                            await widget.authRepository
-                                .signUpWithEmailAndPassword(
-                                    _emailController.text, _pwController.text);
+                            await authRepository.signUpWithEmailAndPassword(
+                                _emailController.text, _pwController.text);
 
                             // Holen uns den Firebase User
                             final firebaseUser =
-                                widget.authRepository.getCurrentUser();
+                                authRepository.getCurrentUser();
 
                             if (firebaseUser != null) {
                               // Erstellen unsere Custom User
                               final user = User(
-                                  id: firebaseUser!.uid,
+                                  id: firebaseUser.uid,
                                   name: _nameController.text,
                                   age: int.parse(
                                       _ageController.text), // String to Int
                                   cart: ShoppingCart());
 
                               // Füge User in Firestore
-                              await widget.databaseRepository.userRepository
-                                  .createUserInFirestore(user);
-
-                              
+                              await userRepository.createUserInFirestore(user);
                             }
                           },
                           child: const Text('Sign up'),
@@ -361,11 +353,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (e) => SignInScreen(
-                                    databaseRepository:
-                                        widget.databaseRepository,
-                                    authRepository: widget.authRepository,
-                                  ),
+                                  builder: (e) => const SignInScreen(),
                                 ),
                               );
                             },
