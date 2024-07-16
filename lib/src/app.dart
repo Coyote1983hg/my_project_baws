@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/user_repository.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/welcome_screen.dart';
-import 'package:my_project_baws/src/features/shopping/presentation/home_screen.dart';
+import 'package:my_project_baws/src/features/shopping/presentation/start_screen.dart';
 import 'package:provider/provider.dart';
 
 // die Wurzel unseres Widgets-Tree
@@ -22,7 +22,7 @@ class App extends StatelessWidget {
         stream: authRepository.authStateChanges(),
         builder: (context, snapshot) {
           final user = snapshot.data;
-          print("User null: ${user == null}");
+          print("User null: ${user == null} ${user?.email}");
           if (user != null) {
             userRepository.getUserFromFirestore(user.uid);
           }
@@ -166,7 +166,7 @@ class App extends StatelessWidget {
               ),
               themeMode: ThemeMode.light,
               title: 'Clothing App',
-              home: user == null ? WelcomeScreen() : HomeScreen());
+              home: user == null ? WelcomeScreen() : const MyHomePage());
         });
   }
 }
