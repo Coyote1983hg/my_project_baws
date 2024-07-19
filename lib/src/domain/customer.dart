@@ -3,12 +3,15 @@ class Customer {
   final String name;
   final String email;
   final String address;
-
+  final String creditcard;
+  final String validdates;
   Customer({
     required this.id,
     required this.name,
     required this.email,
     required this.address,
+    required this.creditcard,
+    required this.validdates,
   });
 
   // Metoda factory pentru crearea unui Customer dintr-un Map
@@ -18,6 +21,8 @@ class Customer {
       name: map['name'] as String,
       email: map['email'] as String,
       address: map['address'] as String,
+      creditcard: map['creditcard'] as String,
+      validdates: map['validdates'] as String,
     );
   }
 
@@ -28,6 +33,8 @@ class Customer {
       'name': name,
       'email': email,
       'address': address,
+      'creditcard':creditcard,
+      'validdates': validdates,
     };
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'dart:math' show pi, sin, cos;
 import 'package:my_project_baws/src/features/shopping/presentation/home_screen.dart';
 
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
 
@@ -14,10 +13,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      Future.delayed(const Duration(seconds: 15)).then((_) => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => HomeScreen())));
-    });
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   Future.delayed(const Duration(seconds: 15)).then((_) => Navigator.push(
+    //       context, MaterialPageRoute(builder: (context) => HomeScreen())));
+    // });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
   }
 
   @override
@@ -62,7 +66,8 @@ class ShimmeringText extends StatefulWidget {
   _ShimmeringTextState createState() => _ShimmeringTextState();
 }
 
-class _ShimmeringTextState extends State<ShimmeringText> with SingleTickerProviderStateMixin {
+class _ShimmeringTextState extends State<ShimmeringText>
+    with SingleTickerProviderStateMixin {
   late AnimationController _shimmerController;
 
   @override
@@ -116,7 +121,8 @@ class AnimatedBackground extends StatefulWidget {
   _AnimatedBackgroundState createState() => _AnimatedBackgroundState();
 }
 
-class _AnimatedBackgroundState extends State<AnimatedBackground> with SingleTickerProviderStateMixin {
+class _AnimatedBackgroundState extends State<AnimatedBackground>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
   @override
@@ -145,8 +151,10 @@ class _AnimatedBackgroundState extends State<AnimatedBackground> with SingleTick
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color.lerp(Colors.blue[900], Colors.purple[900], _controller.value)!,
-                Color.lerp(Colors.purple[900], Colors.red[900], _controller.value)!,
+                Color.lerp(
+                    Colors.blue[900], Colors.purple[900], _controller.value)!,
+                Color.lerp(
+                    Colors.purple[900], Colors.red[900], _controller.value)!,
               ],
             ),
           ),
@@ -164,7 +172,8 @@ class AnimatedWawbaws extends StatefulWidget {
   _AnimatedWawbawsState createState() => _AnimatedWawbawsState();
 }
 
-class _AnimatedWawbawsState extends State<AnimatedWawbaws> with TickerProviderStateMixin {
+class _AnimatedWawbawsState extends State<AnimatedWawbaws>
+    with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
 

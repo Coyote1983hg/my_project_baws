@@ -19,7 +19,7 @@ class Order {
   // Metoda factory pentru crearea unui Order dintr-un Map
   factory Order.fromMap(Map<String, dynamic> map) {
     return Order(
-      id: map['id'] as String,
+      id: map['id'] ,
       items: (map['items'] as List<dynamic>)
           .map((item) => ClothingItem.fromMap(item as Map<String, dynamic>))
           .toList(),

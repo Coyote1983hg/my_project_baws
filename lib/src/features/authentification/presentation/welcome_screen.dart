@@ -10,7 +10,7 @@ import 'package:my_project_baws/src/domain/welcome_button.dart';
 import '../../../data/firestore_database.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  WelcomeScreen({super.key});
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

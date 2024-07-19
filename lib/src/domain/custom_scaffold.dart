@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project_baws/theme/theme.dart';
 
 class CustomScaffold extends StatelessWidget {
   const CustomScaffold({super.key, this.child});
@@ -8,7 +9,7 @@ class CustomScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
-        backgroundColor: Colors.transparent,
+        backgroundColor: ThemeData.light().primaryColor,
         elevation: 0,
       ),
       extendBodyBehindAppBar: true,
