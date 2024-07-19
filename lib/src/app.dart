@@ -4,11 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/user_repository.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/welcome_screen.dart';
+import 'package:my_project_baws/src/features/settings/theme_provider.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/start_screen.dart';
 import 'package:provider/provider.dart';
-
-// die Wurzel unseres Widgets-Tree
-// (besteht aus nur einem MaterialApp-Widget)
+import 'package:my_project_baws/theme/theme.dart';
 class App extends StatelessWidget {
   const App({super.key});
 
@@ -22,14 +21,16 @@ class App extends StatelessWidget {
         stream: authRepository.authStateChanges(),
         builder: (context, snapshot) {
           final user = snapshot.data;
-          print("User null: ${user == null} ${user?.email}");
+         // print("User null: ${user == null} ${user?.email}");
           if (user != null) {
             userRepository.getUserFromFirestore(user.uid);
           }
-          return MaterialApp(
-              key: user == null ? signinKey : welcomeKey,
-              debugShowCheckedModeBanner: false,
-              theme: FlexThemeData.light(
+          return Consumer<ThemeProvider>(
+            builder: (context, themeProvider, child) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'My App',
+                theme: FlexThemeData.light(
                 // Theme config for FlexColorScheme version 7.3.x. Make sure you use
                 // same or higher package version, but still same major version. If you
                 // use a lower package version, some properties may not be supported.
@@ -165,8 +166,33 @@ class App extends StatelessWidget {
                 // fontFamily: GoogleFonts.notoSans().fontFamily,
               ),
               themeMode: ThemeMode.light,
-              title: 'Clothing App',
-              home: user == null ? WelcomeScreen() : const MyHomePage());
+    
+                home: StreamBuilder<User?>(
+                  stream: authRepository.authStateChanges(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      // Afișează un ecran de încărcare în timp ce se verifică starea de autentificare
+                      return const Scaffold(
+                        body: Center(child: CircularProgressIndicator()),
+                      );
+                    }
+
+                    final user = snapshot.data;
+                   // print("User null: ${user == null} ${user?.email}");
+
+                    if (user != null) {
+                      // Utilizator autentificat
+                      userRepository.getUserFromFirestore(user.uid);
+                      return const MyHomePage();
+                    } else {
+                      // Utilizator neautentificat
+                      return const WelcomeScreen();
+                    }
+                  },
+                ),
+              );
+            },
+          );
         });
   }
 }

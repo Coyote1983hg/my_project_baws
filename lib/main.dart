@@ -6,6 +6,7 @@ import 'package:my_project_baws/firebase_options.dart';
 import 'package:my_project_baws/src/app.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/features/settings/theme_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'src/data/firestore_database.dart';
@@ -22,6 +23,7 @@ Future<void> main() async {
   AuthRepository authRepository = AuthRepository(FirebaseAuth.instance);
   UserRepository userRepository = UserRepository(FirebaseFirestore.instance);
 
+
   runApp(
     MultiProvider(
       providers: [
@@ -33,7 +35,8 @@ Future<void> main() async {
         ),
         Provider<UserRepository>(
           create: (_) => userRepository,
-        )
+        ),
+               ChangeNotifierProvider(create: (context) => ThemeProvider()),
       ],
       child: const App(),
     ),
