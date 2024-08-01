@@ -1,3 +1,5 @@
+import 'package:my_project_baws/src/domain/user.dart';
+
 import '../domain/clothing_Item.dart';
 import 'database_repository.dart';
 
@@ -87,7 +89,7 @@ class MockDatabase implements DatabaseRepository {
   }
 
   @override
-  Future<void> addItemToCart(ClothingItem clothingItem) async {
+  Future<void> addItemToCart(ClothingItem clothingItem, User user) async {
     await Future.delayed(const Duration(seconds: 2));
     // zu cart liste hinzufuegen
     cart.add(clothingItem);

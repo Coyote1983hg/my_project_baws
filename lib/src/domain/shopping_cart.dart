@@ -1,4 +1,5 @@
 import 'clothing_Item.dart';
+
 class ShoppingCart {
   final List<ClothingItem> items = [];
 
@@ -11,6 +12,10 @@ class ShoppingCart {
     }
   }
 
+  List<String> getAllItemIds() {
+    return items.map((item) => item.id).toList();
+  }
+
   void removeItem(ClothingItem item) {
     items.remove(item);
   }
@@ -18,7 +23,9 @@ class ShoppingCart {
   double get total => _calculateTotal();
 
   ClothingItem? _getExistingItem(String itemId) {
-    return items.where((i) => i.id == itemId).isEmpty ? null : items.firstWhere((i) => i.id == itemId);
+    return items.where((i) => i.id == itemId).isEmpty
+        ? null
+        : items.firstWhere((i) => i.id == itemId);
   }
 
   double _calculateTotal() {
@@ -27,6 +34,4 @@ class ShoppingCart {
       (sum, item) => sum + (item.price * item.quantity),
     );
   }
-
-  
 }

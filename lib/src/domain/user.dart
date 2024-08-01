@@ -1,17 +1,16 @@
-import 'clothing_Item.dart';
-import 'shopping_cart.dart';
+import 'package:my_project_baws/src/domain/clothing_Item.dart';
 
 class User {
   final String id;
   final String name;
   final int age;
-  final ShoppingCart cart;
+  final List<String> cartIdList;
 
   User({
     required this.id,
     required this.name,
     required this.age,
-    required this.cart,
+    required this.cartIdList,
   });
 
   factory User.fromMap(Map<String, dynamic> map) {
@@ -19,7 +18,8 @@ class User {
       id: map["id"],
       name: map["name"],
       age: map["age"],
-      cart: ShoppingCart(), // Assuming ShoppingCart has a default constructor
+      cartIdList: map["cartIdList"] ??
+          [], // Assuming ShoppingCart has a default constructor
     );
   }
   Map<String, dynamic> toMap() {
@@ -27,15 +27,15 @@ class User {
       'id': id,
       'name': name,
       'age': age,
-      
+      'cart': cartIdList,
     };
   }
 
   void addClothingToBasket(ClothingItem clothing) {
-    cart.addItem(clothing);
+    cartIdList.add(clothing.id);
   }
 
   void removeClothingFromBasket(ClothingItem clothing) {
-    cart.removeItem(clothing);
+    cartIdList.remove(clothing.id);
   }
 }

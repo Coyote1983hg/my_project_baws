@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/data/user_repository.dart';
 import 'package:my_project_baws/src/domain/clothing_Item.dart';
 import 'package:my_project_baws/src/features/shopping/cart_screen.dart';
+import 'package:provider/provider.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   // Attribute
@@ -15,6 +17,8 @@ class ProductDetailsScreen extends StatelessWidget {
   // Methoden
   @override
   Widget build(BuildContext context) {
+    final userRepository = context.read<UserRepository>();
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product Details'),
@@ -61,7 +65,7 @@ class ProductDetailsScreen extends StatelessWidget {
             const SizedBox(height: 16.0),
             ElevatedButton(
               onPressed: () {
-                databaseRepository.addItemToCart(item);
+                databaseRepository.addItemToCart(item, userRepository.user!);
                 Navigator.push(
                     context,
                     MaterialPageRoute(

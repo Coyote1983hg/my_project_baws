@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:my_project_baws/src/domain/clothing_Item.dart';
+import 'package:my_project_baws/src/domain/user.dart';
 
 import 'database_repository.dart';
 
@@ -43,13 +44,10 @@ class FirestoreDatabase implements DatabaseRepository {
   }
 
   @override
-  Future<void> addItemToCart(ClothingItem clothingItem) async {
+  Future<void> addItemToCart(ClothingItem clothingItem, User user) async {
     try {
-      await _firestore
-          .collection('cart')
-          .doc(clothingItem.id)
-          .set(clothingItem.toMap());
-      cart.add(clothingItem);
+      user.addClothingToBasket(clothingItem);
+      await _firestore.collection('users').doc(user.id).update(user.toMap());
     } catch (e) {
       print('Error adding item to cart: $e');
       rethrow;

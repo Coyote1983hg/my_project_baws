@@ -8,8 +8,6 @@ import 'package:my_project_baws/src/features/authentification/presentation/signi
 import 'package:my_project_baws/theme/theme.dart';
 import 'package:provider/provider.dart';
 
-import '../../../domain/shopping_cart.dart';
-
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -282,7 +280,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   name: _nameController.text,
                                   age: int.parse(
                                       _ageController.text), // String to Int
-                                  cart: ShoppingCart());
+                                  cartIdList: []);
 
                               // Füge User in Firestore
                               await userRepository.createUserInFirestore(user);
