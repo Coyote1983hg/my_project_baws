@@ -10,12 +10,17 @@ class UserRepository {
 
   // Bei SignUp (User noch nicht in Firestore!)
   Future<void> createUserInFirestore(User user) async {
-    await instance.collection("users").doc(user.id).set(user.toMap());
+    try {
+      print("Erstelle User");
+      instance.collection("users").doc(user.id).set(user.toMap());
+    } catch (e) {
+      print(e);
+    }
     this.user = user;
   }
 
   // Bei SignIn (Weil User ist bei Firebase Authentication schon drin!!)
-  Future<void> getUserFromFirestore(String uid) async {
+  Future<User?> getUserFromFirestore(String uid) async {
     try {
       // Holen unser custom User von Firestore
       final doc = await instance.collection("users").doc(uid).get();
@@ -28,11 +33,12 @@ class UserRepository {
 
         // Create User Instance from map
         user = User.fromMap(map);
-
         this.user = user;
+        return user;
       }
     } catch (e) {
       print(e);
     }
+    return null;
   }
 }

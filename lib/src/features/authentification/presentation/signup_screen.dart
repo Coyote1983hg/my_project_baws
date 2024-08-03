@@ -117,38 +117,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 25.0,
                       ),
                       // full name
-                      TextFormField(
-                        // validator: (value) {
-                        //   if (value == null || value.isEmpty) {
-                        //     return 'Please enter Full name';
-                        //   }
-                        //   return null;
-                        // },
-                        keyboardType: TextInputType.number,
-                        controller: _ageController,
-                        decoration: InputDecoration(
-                          label: const Text('Age'),
-                          hintText: 'Enter your Age',
-                          hintStyle: const TextStyle(
-                            color: Colors.black26,
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.black12, // Default border color
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: const BorderSide(
-                              color: Colors.black12, // Default border color
-                            ),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 25.0,
-                      ),
+                      
+                      
                       // email
                       TextFormField(
                         controller: _emailController,
@@ -257,6 +227,30 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   content: Text('Processing Data'),
                                 ),
                               );
+                              try {
+                                await authRepository.signUpWithEmailAndPassword(
+                                    _emailController.text, _pwController.text);
+
+                                // Holen uns den Firebase User
+                                final firebaseUser =
+                                    authRepository.getCurrentUser();
+
+                                if (firebaseUser != null) {
+                                  // Erstellen unsere Custom User
+                                  final user = User(
+                                      id: firebaseUser.uid,
+                                      name: _nameController.text,
+                                      age: int.parse(
+                                          _ageController.text), // String to Int
+                                      cartIdList: []);
+
+                                  // Füge User in Firestore
+                                  await userRepository
+                                      .createUserInFirestore(user);
+                                }
+                              } catch (e) {
+                                print(e);
+                              }
                             } else if (!agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
@@ -266,25 +260,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             }
 
                             // Registrieren bei Firebase Authentication
-                            await authRepository.signUpWithEmailAndPassword(
-                                _emailController.text, _pwController.text);
-
-                            // Holen uns den Firebase User
-                            final firebaseUser =
-                                authRepository.getCurrentUser();
-
-                            if (firebaseUser != null) {
-                              // Erstellen unsere Custom User
-                              final user = User(
-                                  id: firebaseUser.uid,
-                                  name: _nameController.text,
-                                  age: int.parse(
-                                      _ageController.text), // String to Int
-                                  cartIdList: []);
-
-                              // Füge User in Firestore
-                              await userRepository.createUserInFirestore(user);
-                            }
                           },
                           child: const Text('Sign up'),
                         ),

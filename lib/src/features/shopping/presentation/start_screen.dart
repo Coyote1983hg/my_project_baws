@@ -1,9 +1,13 @@
-import 'package:flutter/material.dart';
 import 'dart:math' show pi, sin, cos;
+
+import 'package:flutter/material.dart';
+import 'package:my_project_baws/src/data/auth_repository.dart';
+import 'package:my_project_baws/src/data/user_repository.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/home_screen.dart';
+import 'package:provider/provider.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -13,6 +17,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
+
+    final user = context.read<AuthRepository>().getCurrentUser();
+    if (user != null) {
+      context.read<UserRepository>().getUserFromFirestore(user.uid);
+    } else {
+      print("User trotzdem null");
+    }
     // WidgetsBinding.instance.addPostFrameCallback((_) {
     //   Future.delayed(const Duration(seconds: 15)).then((_) => Navigator.push(
     //       context, MaterialPageRoute(builder: (context) => HomeScreen())));
@@ -31,11 +42,11 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: ShimmeringText('We are here for you !'),
+        title: const ShimmeringText('We are here for you !'),
       ),
       body: Stack(
         children: [
-          AnimatedBackground(child: AnimatedWawbaws()),
+          const AnimatedBackground(child: AnimatedWawbaws()),
           Positioned(
             right: 16,
             bottom: 16,
@@ -60,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
 class ShimmeringText extends StatefulWidget {
   final String text;
 
-  ShimmeringText(this.text);
+  const ShimmeringText(this.text, {super.key});
 
   @override
   _ShimmeringTextState createState() => _ShimmeringTextState();
@@ -74,7 +85,7 @@ class _ShimmeringTextState extends State<ShimmeringText>
   void initState() {
     super.initState();
     _shimmerController = AnimationController(
-      duration: Duration(seconds: 3),
+      duration: const Duration(seconds: 3),
       vsync: this,
     )..repeat();
   }
@@ -87,14 +98,14 @@ class _ShimmeringTextState extends State<ShimmeringText>
         return ShaderMask(
           shaderCallback: (bounds) {
             return LinearGradient(
-              colors: [Colors.white, Colors.blue, Colors.white],
+              colors: const [Colors.white, Colors.blue, Colors.white],
               stops: [0.0, _shimmerController.value, 1.0],
               tileMode: TileMode.clamp,
             ).createShader(bounds);
           },
           child: Text(
             widget.text,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
               color: Colors.white,
@@ -115,7 +126,7 @@ class _ShimmeringTextState extends State<ShimmeringText>
 class AnimatedBackground extends StatefulWidget {
   final Widget child;
 
-  AnimatedBackground({required this.child});
+  const AnimatedBackground({super.key, required this.child});
 
   @override
   _AnimatedBackgroundState createState() => _AnimatedBackgroundState();
@@ -166,7 +177,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
 }
 
 class AnimatedWawbaws extends StatefulWidget {
-  const AnimatedWawbaws({Key? key}) : super(key: key);
+  const AnimatedWawbaws({super.key});
 
   @override
   _AnimatedWawbawsState createState() => _AnimatedWawbawsState();
@@ -200,9 +211,9 @@ class _AnimatedWawbawsState extends State<AnimatedWawbaws>
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _buildAnimatedText('Welcome', Colors.blue[300]!, 64),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           _buildAnimatedText('to', Colors.green[300]!, 48),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           _buildAnimatedText('Wawbaws', Colors.red[300]!, 72),
         ],
       ),

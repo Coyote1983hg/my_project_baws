@@ -29,9 +29,42 @@ class FirestoreDatabase implements DatabaseRepository {
   }
 
   @override
+  Future<ClothingItem?> getProduct(String productId) async {
+    try {
+      final doc = await _firestore.collection('products').doc(productId).get();
+      final product = ClothingItem.fromMap(doc.data() as Map<String, dynamic>);
+      return product;
+    } catch (e) {
+      print('Error getting products: $e');
+      return null;
+    }
+  }
+
+  @override
+  Future<List<ClothingItem>?> getMultibleProduct(
+      List<String> productIds) async {
+    try {
+      print(productIds);
+      List<ClothingItem> products = [];
+      for (String productId in productIds) {
+        final doc =
+            await _firestore.collection('products').doc(productId).get();
+        final product =
+            ClothingItem.fromMap(doc.data() as Map<String, dynamic>);
+        products.add(product);
+      }
+
+      return products;
+    } catch (e) {
+      print('Error getting products: $e');
+      return null;
+    }
+  }
+
+  @override
   Future<List<ClothingItem>> getCart() async {
     try {
-      QuerySnapshot snapshot = await _firestore.collection('cart').get();
+      QuerySnapshot snapshot = await _firestore.collection('users').get();
       cart = snapshot.docs
           .map(
               (doc) => ClothingItem.fromMap(doc.data() as Map<String, dynamic>))

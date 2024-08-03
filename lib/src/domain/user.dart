@@ -14,12 +14,13 @@ class User {
   });
 
   factory User.fromMap(Map<String, dynamic> map) {
+    print(map["cart"][0] is String);
     return User(
       id: map["id"],
       name: map["name"],
       age: map["age"],
-      cartIdList: map["cartIdList"] ??
-          [], // Assuming ShoppingCart has a default constructor
+      cartIdList: map["cart"] == null ? [] : List<String>.from(map["cart"]),
+       // Assuming ShoppingCart has a default constructor
     );
   }
   Map<String, dynamic> toMap() {

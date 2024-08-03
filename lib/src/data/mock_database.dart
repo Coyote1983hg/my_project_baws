@@ -101,4 +101,11 @@ class MockDatabase implements DatabaseRepository {
     // zu cart liste entfernen
     cart.remove(clothingItem);
   }
+
+  @override
+  Future<List<ClothingItem>?> getMultibleProduct(List<String> productIds) async{
+    await Future.delayed(const Duration(seconds: 2));
+    List<ClothingItem> clothing = [];
+    return clothing;
+  }
 }

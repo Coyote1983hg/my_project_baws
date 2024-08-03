@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
 import 'package:my_project_baws/src/data/user_repository.dart';
 import 'package:my_project_baws/src/domain/clothing_Item.dart';
@@ -64,8 +65,18 @@ class ProductDetailsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: () {
-                databaseRepository.addItemToCart(item, userRepository.user!);
+              onPressed: ()async {
+                final user = context.read<AuthRepository>().getCurrentUser();
+                
+                if (user != null) {
+                  final userInstance = await context.read<UserRepository>().getUserFromFirestore(user.uid);
+                  databaseRepository.addItemToCart(item,userInstance!);
+                  
+                } else {
+                  debugPrint("User null Error");
+                }
+
+                
                 Navigator.push(
                     context,
                     MaterialPageRoute(

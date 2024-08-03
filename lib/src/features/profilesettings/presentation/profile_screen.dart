@@ -62,7 +62,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               onPressed: () {
                 // Navigate to the settings screen
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SettingsScreen()));
+                    MaterialPageRoute(builder: (context) => const SettingsScreen()));
               },
               child: const Text('Edit Profile'),
             ),
