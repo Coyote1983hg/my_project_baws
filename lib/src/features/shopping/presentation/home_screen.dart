@@ -45,6 +45,7 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         drawer: Drawer(
+          backgroundColor: Color.fromRGBO(192, 234, 241, 1),
           child: ListView(
             children: [
               ListTile(
@@ -109,7 +110,7 @@ class HomeScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Expanded(
-                            child: Image.asset(
+                            child: Image.network(
                               products[index].imagePath,
                               fit: BoxFit.cover,
                             ),

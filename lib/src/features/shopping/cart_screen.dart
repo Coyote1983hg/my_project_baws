@@ -41,7 +41,7 @@ class _CartScreenState extends State<CartScreen> {
                 itemCount: products.length,
                 itemBuilder: (context, index) {
                   return ListTile(
-                    leading: Image.asset(
+                    leading: Image.network(
                       products[index].imagePath,
                       fit: BoxFit.cover,
                     ),

@@ -29,11 +29,11 @@ class ProductDetailsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
+            Image.network(
               item.imagePath,
               fit: BoxFit.cover,
               height: 200.0,
-            ),
+            ), 
             const SizedBox(height: 16.0),
             Text(
               item.name,

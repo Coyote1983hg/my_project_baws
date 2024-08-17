@@ -22,6 +22,7 @@ class App extends StatelessWidget {
         builder: (context, snapshot) {
           final user = snapshot.data;
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             key: user == null ? loginKey : overviewKey,
             theme: lightMode,
             darkTheme: darkMode,

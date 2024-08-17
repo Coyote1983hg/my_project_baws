@@ -10,7 +10,7 @@ const lightColorScheme = ColorScheme(
   error: Color(0xFFBA1A1A),
   onError: Color(0xFFFFFFFF),
   shadow: Color(0xFF000000),
-  outlineVariant: Color(0xFFC2C8BC),
+  outlineVariant: Color.fromRGBO(194, 200, 188, 1),
   surface: Color(0xFFF9FAF3),
   onSurface: Color(0xFF1A1C18),
 );
