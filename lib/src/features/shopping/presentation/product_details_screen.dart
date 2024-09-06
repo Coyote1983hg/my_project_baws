@@ -8,11 +8,11 @@ import 'package:provider/provider.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   // Attribute
-  ClothingItem item;
+  final ClothingItem item;
   final DatabaseRepository databaseRepository;
 
   // Konstruktor
-  ProductDetailsScreen(this.item,
+  const ProductDetailsScreen(this.item,
       {super.key, required this.databaseRepository});
 
   // Methoden
