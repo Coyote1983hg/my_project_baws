@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CheckoutScreen extends StatefulWidget {
+  const CheckoutScreen({super.key});
+
   @override
   _CheckoutScreenState createState() => _CheckoutScreenState();
 }
@@ -18,17 +20,17 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Checkout'),
+        title: const Text('Checkout'),
       ),
       body: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Name',
                 ),
                 validator: (value) {
@@ -43,9 +45,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   }
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Email',
                 ),
                 validator: (value) {
@@ -60,9 +62,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   }
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Address',
                 ),
                 validator: (value) {
@@ -77,9 +79,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   }
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Card Number',
                 ),
                 validator: (value) {
@@ -94,16 +96,18 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   }
                 },
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               Row(
                 children: [
                   Expanded(
                     child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Expiry Date',
                       ),
                       validator: (value) {
-                        if (value == null || value.isEmpty || value.length != 5) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            value.length != 5) {
                           return 'Please enter a valid expiry date';
                         }
                         return null;
@@ -115,14 +119,16 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                       },
                     ),
                   ),
-                  SizedBox(width: 16.0),
+                  const SizedBox(width: 16.0),
                   Expanded(
                     child: TextFormField(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'CVV',
                       ),
                       validator: (value) {
-                        if (value == null || value.isEmpty || value.length != 3) {
+                        if (value == null ||
+                            value.isEmpty ||
+                            value.length != 3) {
                           return 'Please enter a valid CVV';
                         }
                         return null;
@@ -136,7 +142,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: 16.0),
+              const SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -145,7 +151,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                     Navigator.pushNamed(context, '/orders');
                   }
                 },
-                child: Text('Place Order'),
+                child: const Text('Place Order'),
               ),
             ],
           ),

@@ -81,8 +81,10 @@ class _CartScreenState extends State<CartScreen> {
       bottomNavigationBar: BottomAppBar(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CheckoutScreen()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CheckoutScreen()));
           },
           child: const Text('Proceed to Checkout'),
         ),

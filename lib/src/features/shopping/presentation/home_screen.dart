@@ -66,8 +66,10 @@ class HomeScreen extends StatelessWidget {
                 leading: const Icon(Icons.person),
                 title: const Text('Profile'),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfileScreen()));
                 },
               ),
               ListTile(
@@ -77,7 +79,7 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SettingsScreen()));
+                          builder: (context) => const SettingsScreen()));
                 },
               ),
             ],
