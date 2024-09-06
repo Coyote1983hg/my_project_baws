@@ -94,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   childAspectRatio: 0.7,
                 ),
-                itemCount: databaseRepository.products.length,
+                itemCount: products.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
