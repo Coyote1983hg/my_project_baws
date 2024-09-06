@@ -3,7 +3,6 @@ import 'package:my_project_baws/src/domain/custom_scaffold.dart';
 import 'package:my_project_baws/src/domain/welcome_button.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signup_screen.dart';
-import 'package:my_project_baws/theme/theme.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -60,7 +59,7 @@ class WelcomeScreen extends StatelessWidget {
                     buttonText: 'Sign up',
                     onTap: const SignUpScreen(),
                     color: Colors.white,
-                    textColor: lightColorScheme.primary,
+                    textColor: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ],

@@ -6,8 +6,6 @@ import 'package:my_project_baws/src/domain/custom_scaffold.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signup_screen.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../theme/theme.dart';
-
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -71,7 +69,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         style: TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.w900,
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       const SizedBox(
@@ -153,7 +151,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                     rememberPassword = value!;
                                   });
                                 },
-                                activeColor: lightColorScheme.primary,
+                                activeColor:
+                                    Theme.of(context).colorScheme.primary,
                               ),
                               const Text(
                                 'Remember me',
@@ -168,7 +167,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               'Forget password?',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
                           ),
@@ -204,7 +203,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             final user = authRepository.getCurrentUser();
 
                             // Überprüfen ob User nicht null ist
-                            if (user != null ) {
+                            if (user != null) {
                               // Holen uns den User aus Firestore mit Firebase Authentication User Id
                               await userRepository
                                   .getUserFromFirestore(user.uid);
@@ -281,7 +280,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               'Sign up',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: lightColorScheme.primary,
+                                color: Theme.of(context).colorScheme.primary,
                               ),
                             ),
                           ),

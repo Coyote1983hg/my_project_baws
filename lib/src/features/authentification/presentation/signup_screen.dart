@@ -5,7 +5,6 @@ import 'package:my_project_baws/src/data/user_repository.dart';
 import 'package:my_project_baws/src/domain/custom_scaffold.dart';
 import 'package:my_project_baws/src/domain/user.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
-import 'package:my_project_baws/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -77,7 +76,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         style: TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.w900,
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       const SizedBox(
@@ -187,14 +186,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Row(
                         children: [
                           Checkbox(
-                            value: agreePersonalData,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                agreePersonalData = value!;
-                              });
-                            },
-                            activeColor: lightColorScheme.primary,
-                          ),
+                              value: agreePersonalData,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  agreePersonalData = value!;
+                                });
+                              },
+                              activeColor:
+                                  Theme.of(context).colorScheme.primary),
                           const Text(
                             'I agree to the processing of ',
                             style: TextStyle(
@@ -204,9 +203,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Text(
                             'Personal data',
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: lightColorScheme.primary,
-                            ),
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.primary),
                           ),
                         ],
                       ),
@@ -331,9 +329,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: Text(
                               'Sign in',
                               style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: lightColorScheme.primary,
-                              ),
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary),
                             ),
                           ),
                         ],
