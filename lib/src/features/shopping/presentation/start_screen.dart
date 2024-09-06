@@ -22,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (user != null) {
       context.read<UserRepository>().getUserFromFirestore(user.uid);
     } else {
-      print("User trotzdem null");
+      debugPrint("User trotzdem null");
     }
     // WidgetsBinding.instance.addPostFrameCallback((_) {
     //   Future.delayed(const Duration(seconds: 15)).then((_) => Navigator.push(

@@ -117,8 +117,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 25.0,
                       ),
                       // full name
-                      
-                      
+
                       // email
                       TextFormField(
                         controller: _emailController,
@@ -249,7 +248,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       .createUserInFirestore(user);
                                 }
                               } catch (e) {
-                                print(e);
+                                debugPrint("$e");
                               }
                             } else if (!agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(

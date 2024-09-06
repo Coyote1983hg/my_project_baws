@@ -65,18 +65,18 @@ class ProductDetailsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: ()async {
+              onPressed: () async {
                 final user = context.read<AuthRepository>().getCurrentUser();
-                
+
                 if (user != null) {
-                  final userInstance = await context.read<UserRepository>().getUserFromFirestore(user.uid);
-                  databaseRepository.addItemToCart(item,userInstance!);
-                  
+                  final userInstance = await context
+                      .read<UserRepository>()
+                      .getUserFromFirestore(user.uid);
+                  databaseRepository.addItemToCart(item, userInstance!);
                 } else {
                   debugPrint("User null Error");
                 }
 
-                
                 Navigator.push(
                     context,
                     MaterialPageRoute(

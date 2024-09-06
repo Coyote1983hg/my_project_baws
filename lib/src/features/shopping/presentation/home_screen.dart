@@ -58,8 +58,10 @@ class HomeScreen extends StatelessWidget {
                 leading: const Icon(Icons.shopping_bag),
                 title: const Text('Orders'),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OrdersScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const OrdersScreen()));
                 },
               ),
               ListTile(
