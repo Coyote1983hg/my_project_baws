@@ -1,6 +1,6 @@
-import 'clothing_item.dart';
-
 // Inventory Manager class
+import 'package:my_project_baws/src/domain/clothing_item.dart';
+
 class InventoryManager {
   final Map<String, ClothingItem> _inventory = {};
 
