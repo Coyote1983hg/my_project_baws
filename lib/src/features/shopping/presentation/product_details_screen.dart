@@ -18,8 +18,6 @@ class ProductDetailsScreen extends StatelessWidget {
   // Methoden
   @override
   Widget build(BuildContext context) {
-    final userRepository = context.read<UserRepository>();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product Details'),
