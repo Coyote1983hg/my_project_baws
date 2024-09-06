@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_project_baws/src/common/custom_scaffold.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/user_repository.dart';
-import 'package:my_project_baws/src/domain/custom_scaffold.dart';
 import 'package:my_project_baws/src/domain/user.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
 import 'package:provider/provider.dart';
@@ -37,8 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-  // final _formSignupKey = GlobalKey<FormState>();
-  bool agreePersonalData = true;
+  bool _agreePersonalData = true;
   @override
   Widget build(BuildContext context) {
     final authRepository = context.read<AuthRepository>();
@@ -186,10 +185,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Row(
                         children: [
                           Checkbox(
-                              value: agreePersonalData,
+                              value: _agreePersonalData,
                               onChanged: (bool? value) {
                                 setState(() {
-                                  agreePersonalData = value!;
+                                  _agreePersonalData = value!;
                                 });
                               },
                               activeColor:
@@ -217,7 +216,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: ElevatedButton(
                           onPressed: () async {
                             if (/*_formSignupKey.currentState!.validate() &&*/
-                                agreePersonalData) {
+                                _agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Processing Data'),
@@ -247,7 +246,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               } catch (e) {
                                 debugPrint("$e");
                               }
-                            } else if (!agreePersonalData) {
+                            } else if (!_agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
