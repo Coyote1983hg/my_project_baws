@@ -1,9 +1,8 @@
+import 'package:my_project_baws/src/domain/clothing_item.dart';
+import 'package:my_project_baws/src/domain/customer.dart';
+import 'package:my_project_baws/src/domain/inventory_manager.dart';
 import 'package:my_project_baws/src/domain/order.dart';
-
-import 'clothing_Item.dart';
-import 'shopping_cart.dart';
-import 'customer.dart';
-import 'inventory_manager.dart';
+import 'package:my_project_baws/src/domain/shopping_cart.dart';
 
 // Order Manager class
 class OrderManager {

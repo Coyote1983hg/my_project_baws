@@ -1,12 +1,10 @@
 import 'package:my_project_baws/src/domain/user.dart';
 
-import '../domain/clothing_Item.dart';
+import '../domain/clothing_item.dart';
 import 'database_repository.dart';
 
 class MockDatabase implements DatabaseRepository {
-// mockdaten kommt irgendwann von der DB zurueck
-  @override
-  late List<ClothingItem> products = [
+  final List<ClothingItem> products = [
     ClothingItem(
       id: '1',
       name: 'Giorgio\'s Boxer Shorts',
@@ -72,9 +70,7 @@ class MockDatabase implements DatabaseRepository {
       imagePath: 'assets/images/305-00H-6.png',
     )
   ];
-  // TODO: Als map schreiben
-  @override
-  List<ClothingItem> cart = [];
+  final List<ClothingItem> cart = [];
 // mockfunktionen
   @override
   Future<List<ClothingItem>> getProducts() async {
@@ -103,9 +99,16 @@ class MockDatabase implements DatabaseRepository {
   }
 
   @override
-  Future<List<ClothingItem>?> getMultibleProduct(List<String> productIds) async{
+  Future<List<ClothingItem>?> getMultibleProduct(
+      List<String> productIds) async {
     await Future.delayed(const Duration(seconds: 2));
     List<ClothingItem> clothing = [];
     return clothing;
+  }
+
+  @override
+  Future<ClothingItem?> getProduct(String productId) async {
+    await Future.delayed(const Duration(seconds: 2));
+    return null;
   }
 }

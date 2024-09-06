@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/src/data/auth_repository.dart';
-import 'package:my_project_baws/src/data/database_repository.dart';
+import 'package:my_project_baws/src/common/custom_scaffold.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signup_screen.dart';
-import 'package:my_project_baws/theme/theme.dart';
-import 'package:my_project_baws/src/domain/custom_scaffold.dart';
-import 'package:my_project_baws/src/domain/welcome_button.dart';
-
-import '../../../data/firestore_database.dart';
+import 'package:my_project_baws/src/features/authentification/presentation/welcome_button.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -51,7 +46,7 @@ class WelcomeScreen extends StatelessWidget {
             alignment: Alignment.bottomRight,
             child: Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: WelcomeButton(
                     buttonText: 'Sign in',
                     onTap: SignInScreen(),
@@ -62,9 +57,9 @@ class WelcomeScreen extends StatelessWidget {
                 Expanded(
                   child: WelcomeButton(
                     buttonText: 'Sign up',
-                    onTap: SignUpScreen(),
+                    onTap: const SignUpScreen(),
                     color: Colors.white,
-                    textColor: lightColorScheme.primary,
+                    textColor: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ],

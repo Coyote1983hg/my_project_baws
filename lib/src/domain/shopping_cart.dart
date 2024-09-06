@@ -1,4 +1,4 @@
-import 'clothing_Item.dart';
+import 'package:my_project_baws/src/domain/clothing_item.dart';
 
 class ShoppingCart {
   final List<ClothingItem> items = [];

@@ -2,24 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
 import 'package:my_project_baws/src/data/user_repository.dart';
-import 'package:my_project_baws/src/domain/clothing_Item.dart';
+import 'package:my_project_baws/src/domain/clothing_item.dart';
 import 'package:my_project_baws/src/features/shopping/cart_screen.dart';
 import 'package:provider/provider.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   // Attribute
-  ClothingItem item;
+  final ClothingItem item;
   final DatabaseRepository databaseRepository;
 
   // Konstruktor
-  ProductDetailsScreen(this.item,
+  const ProductDetailsScreen(this.item,
       {super.key, required this.databaseRepository});
 
   // Methoden
   @override
   Widget build(BuildContext context) {
-    final userRepository = context.read<UserRepository>();
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product Details'),
@@ -65,18 +63,18 @@ class ProductDetailsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             ElevatedButton(
-              onPressed: ()async {
+              onPressed: () async {
                 final user = context.read<AuthRepository>().getCurrentUser();
-                
+
                 if (user != null) {
-                  final userInstance = await context.read<UserRepository>().getUserFromFirestore(user.uid);
-                  databaseRepository.addItemToCart(item,userInstance!);
-                  
+                  final userInstance = await context
+                      .read<UserRepository>()
+                      .getUserFromFirestore(user.uid);
+                  databaseRepository.addItemToCart(item, userInstance!);
                 } else {
                   debugPrint("User null Error");
                 }
-
-                
+                if (!context.mounted) return;
                 Navigator.push(
                     context,
                     MaterialPageRoute(

@@ -19,10 +19,9 @@ Future<void> main() async {
   );
 
   // Database einmal an der Wurzel erzeugt
-  FirestoreDatabase databaseRepository = FirestoreDatabase();
-  AuthRepository authRepository = AuthRepository(FirebaseAuth.instance);
-  UserRepository userRepository = UserRepository(FirebaseFirestore.instance);
-
+  final databaseRepository = FirestoreDatabase();
+  final authRepository = AuthRepository(FirebaseAuth.instance);
+  final userRepository = UserRepository(FirebaseFirestore.instance);
 
   runApp(
     MultiProvider(
@@ -36,7 +35,7 @@ Future<void> main() async {
         Provider<UserRepository>(
           create: (_) => userRepository,
         ),
-               ChangeNotifierProvider(create: (context) => ThemeProvider()),
+        ChangeNotifierProvider(create: (context) => ThemeProvider()),
       ],
       child: const App(),
     ),

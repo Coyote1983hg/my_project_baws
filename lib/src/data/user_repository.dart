@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/foundation.dart';
 import 'package:my_project_baws/src/domain/user.dart';
 
 class UserRepository {
@@ -11,10 +12,10 @@ class UserRepository {
   // Bei SignUp (User noch nicht in Firestore!)
   Future<void> createUserInFirestore(User user) async {
     try {
-      print("Erstelle User");
+      debugPrint("Erstelle User");
       instance.collection("users").doc(user.id).set(user.toMap());
     } catch (e) {
-      print(e);
+      debugPrint("$e");
     }
     this.user = user;
   }
@@ -37,7 +38,7 @@ class UserRepository {
         return user;
       }
     } catch (e) {
-      print(e);
+      debugPrint("$e");
     }
     return null;
   }

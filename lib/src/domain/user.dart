@@ -1,4 +1,5 @@
-import 'package:my_project_baws/src/domain/clothing_Item.dart';
+import 'package:flutter/foundation.dart';
+import 'package:my_project_baws/src/domain/clothing_item.dart';
 
 class User {
   final String id;
@@ -14,13 +15,13 @@ class User {
   });
 
   factory User.fromMap(Map<String, dynamic> map) {
-    print(map["cart"][0] is String);
+    debugPrint(map["cart"][0] as String);
     return User(
       id: map["id"],
       name: map["name"],
       age: map["age"],
       cartIdList: map["cart"] == null ? [] : List<String>.from(map["cart"]),
-       // Assuming ShoppingCart has a default constructor
+      // Assuming ShoppingCart has a default constructor
     );
   }
   Map<String, dynamic> toMap() {

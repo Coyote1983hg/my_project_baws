@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_project_baws/src/common/custom_scaffold.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/user_repository.dart';
-import 'package:my_project_baws/src/domain/custom_scaffold.dart';
 import 'package:my_project_baws/src/domain/user.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signin_screen.dart';
-import 'package:my_project_baws/theme/theme.dart';
 import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -23,7 +22,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _emailController = TextEditingController();
     _pwController = TextEditingController();
@@ -39,8 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-  // final _formSignupKey = GlobalKey<FormState>();
-  bool agreePersonalData = true;
+  bool _agreePersonalData = true;
   @override
   Widget build(BuildContext context) {
     final authRepository = context.read<AuthRepository>();
@@ -78,7 +75,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         style: TextStyle(
                           fontSize: 30.0,
                           fontWeight: FontWeight.w900,
-                          color: lightColorScheme.primary,
+                          color: Theme.of(context).colorScheme.primary,
                         ),
                       ),
                       const SizedBox(
@@ -117,8 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         height: 25.0,
                       ),
                       // full name
-                      
-                      
+
                       // email
                       TextFormField(
                         controller: _emailController,
@@ -189,14 +185,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       Row(
                         children: [
                           Checkbox(
-                            value: agreePersonalData,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                agreePersonalData = value!;
-                              });
-                            },
-                            activeColor: lightColorScheme.primary,
-                          ),
+                              value: _agreePersonalData,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  _agreePersonalData = value!;
+                                });
+                              },
+                              activeColor:
+                                  Theme.of(context).colorScheme.primary),
                           const Text(
                             'I agree to the processing of ',
                             style: TextStyle(
@@ -206,9 +202,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           Text(
                             'Personal data',
                             style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: lightColorScheme.primary,
-                            ),
+                                fontWeight: FontWeight.bold,
+                                color: Theme.of(context).colorScheme.primary),
                           ),
                         ],
                       ),
@@ -221,7 +216,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: ElevatedButton(
                           onPressed: () async {
                             if (/*_formSignupKey.currentState!.validate() &&*/
-                                agreePersonalData) {
+                                _agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text('Processing Data'),
@@ -249,9 +244,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       .createUserInFirestore(user);
                                 }
                               } catch (e) {
-                                print(e);
+                                debugPrint("$e");
                               }
-                            } else if (!agreePersonalData) {
+                            } else if (!_agreePersonalData) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                     content: Text(
@@ -333,9 +328,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             child: Text(
                               'Sign in',
                               style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: lightColorScheme.primary,
-                              ),
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary),
                             ),
                           ),
                         ],

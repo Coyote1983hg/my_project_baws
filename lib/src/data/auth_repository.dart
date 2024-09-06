@@ -8,6 +8,7 @@
    */
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 
 class AuthRepository {
   // Attribute
@@ -33,11 +34,11 @@ class AuthRepository {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: pw);
-      print("Logged in");
+      debugPrint("Logged in");
     } on FirebaseAuthException catch (e) {
-      print(e.code);
+      debugPrint(e.code);
     } catch (e) {
-      print(e);
+      debugPrint("$e");
     }
   }
 

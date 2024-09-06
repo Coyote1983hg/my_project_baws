@@ -6,7 +6,6 @@ import 'package:my_project_baws/src/features/shopping/presentation/start_screen.
 import 'package:my_project_baws/theme/theme.dart';
 import 'package:provider/provider.dart';
 
-
 class App extends StatelessWidget {
   const App({super.key});
   @override
@@ -25,8 +24,8 @@ class App extends StatelessWidget {
             key: user == null ? loginKey : overviewKey,
             theme: lightMode,
             darkTheme: darkMode,
-            themeMode : isDarkMode ? ThemeMode.dark : ThemeMode.light,
-            home: user == null ? const  WelcomeScreen(): const MyHomePage(),
+            themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
+            home: user == null ? const WelcomeScreen() : const MyHomePage(),
             // OverviewScreen(databaseRepository: databaseRepository),
           );
         });
@@ -56,11 +55,11 @@ class App extends StatelessWidget {
           home = 
               iuser != null ? {
                 userRepository.getUserFromFirestore(user.uid);
-                print("User null: ${user == null} ${user.email}");
+                debugPrint("User null: ${user == null} ${user.email}");
 
                 return const MyHomePage();
               } : {
-                print("Snapshotdata: ${snapshot.data}"),
+                debugPrint("Snapshotdata: ${snapshot.data}"),
                 return const WelcomeScreen()
               }
               

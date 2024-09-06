@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
 import 'package:my_project_baws/src/data/user_repository.dart';
-import 'package:my_project_baws/src/domain/clothing_Item.dart';
+import 'package:my_project_baws/src/domain/clothing_item.dart';
 import 'package:my_project_baws/src/domain/user.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/checkout_screen.dart';
 import 'package:provider/provider.dart';
@@ -11,20 +11,20 @@ class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
   @override
-  _CartScreenState createState() => _CartScreenState();
+  CartScreenState createState() => CartScreenState();
 }
 
 Future<List<ClothingItem>?> getProducts(BuildContext context) async {
-  final databaseRepository = context.read<DatabaseRepository>();
   final currentUserId = context.read<AuthRepository>().getCurrentUser()!.uid;
   User? user =
       await context.read<UserRepository>().getUserFromFirestore(currentUserId);
+  if (!context.mounted) return [];
   return context
       .read<DatabaseRepository>()
       .getMultibleProduct(user!.cartIdList);
 }
 
-class _CartScreenState extends State<CartScreen> {
+class CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,8 +81,10 @@ class _CartScreenState extends State<CartScreen> {
       bottomNavigationBar: BottomAppBar(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => CheckoutScreen()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const CheckoutScreen()));
           },
           child: const Text('Proceed to Checkout'),
         ),

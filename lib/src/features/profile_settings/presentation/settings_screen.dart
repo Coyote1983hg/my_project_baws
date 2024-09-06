@@ -6,10 +6,10 @@ class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});
 
   @override
-  _SettingsScreenState createState() => _SettingsScreenState();
+  SettingsScreenState createState() => SettingsScreenState();
 }
 
-class _SettingsScreenState extends State<SettingsScreen> {
+class SettingsScreenState extends State<SettingsScreen> {
   bool _notifications = true;
 
   @override
@@ -57,7 +57,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
           value: _notifications,
           onChanged: (value) {
             setState(() {
-
               _notifications = value;
             });
           },

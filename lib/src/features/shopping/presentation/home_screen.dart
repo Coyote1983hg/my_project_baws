@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/src/data/user_repository.dart';
-import 'package:my_project_baws/src/domain/clothing_Item.dart';
-import 'package:my_project_baws/src/features/profilesettings/presentation/profile_screen.dart';
-import 'package:my_project_baws/src/features/profilesettings/presentation/settings_screen.dart';
+import 'package:my_project_baws/src/domain/clothing_item.dart';
+import 'package:my_project_baws/src/features/profile_settings/presentation/profile_screen.dart';
+import 'package:my_project_baws/src/features/profile_settings/presentation/settings_screen.dart';
 import 'package:my_project_baws/src/features/shopping/cart_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/orders_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/product_details_screen.dart';
@@ -25,9 +24,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userRepository = context.read<UserRepository>();
     final databaseRepository = context.read<DatabaseRepository>();
-    final user = userRepository.user;
 
     return Scaffold(
         appBar: AppBar(
@@ -58,16 +55,20 @@ class HomeScreen extends StatelessWidget {
                 leading: const Icon(Icons.shopping_bag),
                 title: const Text('Orders'),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => OrdersScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const OrdersScreen()));
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.person),
                 title: const Text('Profile'),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => ProfileScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProfileScreen()));
                 },
               ),
               ListTile(
@@ -77,7 +78,7 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => SettingsScreen()));
+                          builder: (context) => const SettingsScreen()));
                 },
               ),
             ],
@@ -93,7 +94,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   childAspectRatio: 0.7,
                 ),
-                itemCount: databaseRepository.products.length,
+                itemCount: products.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {

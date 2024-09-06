@@ -22,7 +22,7 @@ class _MyHomePageState extends State<MyHomePage> {
     if (user != null) {
       context.read<UserRepository>().getUserFromFirestore(user.uid);
     } else {
-      print("User trotzdem null");
+      debugPrint("User trotzdem null");
     }
     // WidgetsBinding.instance.addPostFrameCallback((_) {
     //   Future.delayed(const Duration(seconds: 15)).then((_) => Navigator.push(
@@ -74,10 +74,10 @@ class ShimmeringText extends StatefulWidget {
   const ShimmeringText(this.text, {super.key});
 
   @override
-  _ShimmeringTextState createState() => _ShimmeringTextState();
+  ShimmeringTextState createState() => ShimmeringTextState();
 }
 
-class _ShimmeringTextState extends State<ShimmeringText>
+class ShimmeringTextState extends State<ShimmeringText>
     with SingleTickerProviderStateMixin {
   late AnimationController _shimmerController;
 
@@ -129,10 +129,10 @@ class AnimatedBackground extends StatefulWidget {
   const AnimatedBackground({super.key, required this.child});
 
   @override
-  _AnimatedBackgroundState createState() => _AnimatedBackgroundState();
+  AnimatedBackgroundState createState() => AnimatedBackgroundState();
 }
 
-class _AnimatedBackgroundState extends State<AnimatedBackground>
+class AnimatedBackgroundState extends State<AnimatedBackground>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
 
@@ -180,10 +180,10 @@ class AnimatedWawbaws extends StatefulWidget {
   const AnimatedWawbaws({super.key});
 
   @override
-  _AnimatedWawbawsState createState() => _AnimatedWawbawsState();
+  AnimatedWawbawsState createState() => AnimatedWawbawsState();
 }
 
-class _AnimatedWawbawsState extends State<AnimatedWawbaws>
+class AnimatedWawbawsState extends State<AnimatedWawbaws>
     with TickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _animation;
