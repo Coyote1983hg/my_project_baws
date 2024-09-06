@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:my_project_baws/src/common/custom_scaffold.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/user_repository.dart';
-import 'package:my_project_baws/src/domain/custom_scaffold.dart';
 import 'package:my_project_baws/src/features/authentification/presentation/signup_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -31,8 +31,6 @@ class _SignInScreenState extends State<SignInScreen> {
     _pwController.dispose();
     super.dispose();
   }
-
-  bool showPassword = false;
 
   @override
   Widget build(BuildContext context) {
