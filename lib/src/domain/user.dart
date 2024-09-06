@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:my_project_baws/src/domain/clothing_Item.dart';
+import 'package:my_project_baws/src/domain/clothing_item.dart';
 
 class User {
   final String id;

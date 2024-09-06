@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/database_repository.dart';
 import 'package:my_project_baws/src/data/user_repository.dart';
-import 'package:my_project_baws/src/domain/clothing_Item.dart';
+import 'package:my_project_baws/src/domain/clothing_item.dart';
 import 'package:my_project_baws/src/features/shopping/cart_screen.dart';
 import 'package:provider/provider.dart';
 

@@ -1,9 +1,9 @@
 import 'package:my_project_baws/src/domain/order.dart';
 
-import 'clothing_Item.dart';
-import 'shopping_cart.dart';
+import 'clothing_item.dart';
 import 'customer.dart';
 import 'inventory_manager.dart';
+import 'shopping_cart.dart';
 
 // Order Manager class
 class OrderManager {

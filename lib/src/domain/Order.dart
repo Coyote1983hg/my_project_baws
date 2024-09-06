@@ -14,12 +14,12 @@ class Order {
     required this.customer,
     required this.total,
     DateTime? createdAt,
-  }) : this.createdAt = createdAt ?? DateTime.now();
+  }) : createdAt = createdAt ?? DateTime.now();
 
   // Metoda factory pentru crearea unui Order dintr-un Map
   factory Order.fromMap(Map<String, dynamic> map) {
     return Order(
-      id: map['id'] ,
+      id: map['id'],
       items: (map['items'] as List<dynamic>)
           .map((item) => ClothingItem.fromMap(item as Map<String, dynamic>))
           .toList(),

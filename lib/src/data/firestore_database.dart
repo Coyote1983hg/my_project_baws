@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
-import 'package:my_project_baws/src/domain/clothing_Item.dart';
+import 'package:my_project_baws/src/domain/clothing_item.dart';
 import 'package:my_project_baws/src/domain/user.dart';
 
 import 'database_repository.dart';

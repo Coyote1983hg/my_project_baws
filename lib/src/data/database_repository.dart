@@ -1,4 +1,4 @@
-import 'package:my_project_baws/src/domain/clothing_Item.dart';
+import 'package:my_project_baws/src/domain/clothing_item.dart';
 import 'package:my_project_baws/src/domain/user.dart';
 
 abstract class DatabaseRepository {

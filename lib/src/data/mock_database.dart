@@ -1,6 +1,6 @@
 import 'package:my_project_baws/src/domain/user.dart';
 
-import '../domain/clothing_Item.dart';
+import '../domain/clothing_item.dart';
 import 'database_repository.dart';
 
 class MockDatabase implements DatabaseRepository {
