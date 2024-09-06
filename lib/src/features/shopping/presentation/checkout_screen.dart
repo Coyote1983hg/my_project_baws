@@ -9,12 +9,6 @@ class CheckoutScreen extends StatefulWidget {
 
 class CheckoutScreenState extends State<CheckoutScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _name = '';
-  String _email = '';
-  String _address = '';
-  String _cardNumber = '';
-  String _expiryDate = '';
-  String _cvv = '';
 
   @override
   Widget build(BuildContext context) {
@@ -39,11 +33,6 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                   }
                   return null;
                 },
-                onSaved: (value) {
-                  if (value != null) {
-                    _name = value;
-                  }
-                },
               ),
               const SizedBox(height: 16.0),
               TextFormField(
@@ -55,11 +44,6 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                     return 'Please enter a valid email address';
                   }
                   return null;
-                },
-                onSaved: (value) {
-                  if (value != null) {
-                    _email = value;
-                  }
                 },
               ),
               const SizedBox(height: 16.0),
@@ -73,11 +57,6 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                   }
                   return null;
                 },
-                onSaved: (value) {
-                  if (value != null) {
-                    _address = value;
-                  }
-                },
               ),
               const SizedBox(height: 16.0),
               TextFormField(
@@ -89,11 +68,6 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                     return 'Please enter a valid card number';
                   }
                   return null;
-                },
-                onSaved: (value) {
-                  if (value != null) {
-                    _cardNumber = value;
-                  }
                 },
               ),
               const SizedBox(height: 16.0),
@@ -112,11 +86,6 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                         }
                         return null;
                       },
-                      onSaved: (value) {
-                        if (value != null) {
-                          _expiryDate = value;
-                        }
-                      },
                     ),
                   ),
                   const SizedBox(width: 16.0),
@@ -132,11 +101,6 @@ class CheckoutScreenState extends State<CheckoutScreen> {
                           return 'Please enter a valid CVV';
                         }
                         return null;
-                      },
-                      onSaved: (value) {
-                        if (value != null) {
-                          _cvv = value;
-                        }
                       },
                     ),
                   ),

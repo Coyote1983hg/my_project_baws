@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_project_baws/src/data/user_repository.dart';
 import 'package:my_project_baws/src/domain/clothing_Item.dart';
 import 'package:my_project_baws/src/features/profilesettings/presentation/profile_screen.dart';
 import 'package:my_project_baws/src/features/profilesettings/presentation/settings_screen.dart';
@@ -25,9 +24,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final userRepository = context.read<UserRepository>();
     final databaseRepository = context.read<DatabaseRepository>();
-    final user = userRepository.user;
 
     return Scaffold(
         appBar: AppBar(

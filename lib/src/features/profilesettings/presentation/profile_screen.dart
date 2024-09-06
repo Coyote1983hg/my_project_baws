@@ -18,7 +18,6 @@ class ProfileScreenState extends State<ProfileScreen> {
     final authRepository = context.read<AuthRepository>();
     String name = userRepository.user?.name ?? "";
     String email = authRepository.getCurrentUser()?.email ?? "";
-    String address = '123 NEW STRASSE, VREDEN DEUTCHLAND';
     return Scaffold(
       appBar: AppBar(
         title: const Text('Profile'),
