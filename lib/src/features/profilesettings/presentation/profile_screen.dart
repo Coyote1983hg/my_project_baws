@@ -8,10 +8,10 @@ class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  _ProfileScreenState createState() => _ProfileScreenState();
+  ProfileScreenState createState() => ProfileScreenState();
 }
 
-class _ProfileScreenState extends State<ProfileScreen> {
+class ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final userRepository = context.read<UserRepository>();
@@ -46,7 +46,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             const SizedBox(height: 8.0),
-           Text(email),
+            Text(email),
             const SizedBox(height: 16.0),
             const Text(
               'Address',
@@ -61,8 +61,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ElevatedButton(
               onPressed: () {
                 // Navigate to the settings screen
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const SettingsScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SettingsScreen()));
               },
               child: const Text('Edit Profile'),
             ),

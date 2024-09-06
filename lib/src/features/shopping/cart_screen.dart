@@ -11,11 +11,10 @@ class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
   @override
-  _CartScreenState createState() => _CartScreenState();
+  CartScreenState createState() => CartScreenState();
 }
 
 Future<List<ClothingItem>?> getProducts(BuildContext context) async {
-  final databaseRepository = context.read<DatabaseRepository>();
   final currentUserId = context.read<AuthRepository>().getCurrentUser()!.uid;
   User? user =
       await context.read<UserRepository>().getUserFromFirestore(currentUserId);
@@ -24,7 +23,7 @@ Future<List<ClothingItem>?> getProducts(BuildContext context) async {
       .getMultibleProduct(user!.cartIdList);
 }
 
-class _CartScreenState extends State<CartScreen> {
+class CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
