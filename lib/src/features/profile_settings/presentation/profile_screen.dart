@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/data/auth_repository.dart';
 import 'package:my_project_baws/src/data/user_repository.dart';
-import 'package:my_project_baws/src/features/profilesettings/presentation/settings_screen.dart';
+import 'package:my_project_baws/src/features/profile_settings/presentation/settings_screen.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatefulWidget {

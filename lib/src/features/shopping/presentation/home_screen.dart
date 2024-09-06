@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_project_baws/src/domain/clothing_item.dart';
-import 'package:my_project_baws/src/features/profilesettings/presentation/profile_screen.dart';
-import 'package:my_project_baws/src/features/profilesettings/presentation/settings_screen.dart';
+import 'package:my_project_baws/src/features/profile_settings/presentation/profile_screen.dart';
+import 'package:my_project_baws/src/features/profile_settings/presentation/settings_screen.dart';
 import 'package:my_project_baws/src/features/shopping/cart_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/orders_screen.dart';
 import 'package:my_project_baws/src/features/shopping/presentation/product_details_screen.dart';
