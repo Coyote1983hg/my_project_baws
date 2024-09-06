@@ -18,6 +18,7 @@ Future<List<ClothingItem>?> getProducts(BuildContext context) async {
   final currentUserId = context.read<AuthRepository>().getCurrentUser()!.uid;
   User? user =
       await context.read<UserRepository>().getUserFromFirestore(currentUserId);
+  if (!context.mounted) return [];
   return context
       .read<DatabaseRepository>()
       .getMultibleProduct(user!.cartIdList);

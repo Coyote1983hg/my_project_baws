@@ -74,7 +74,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 } else {
                   debugPrint("User null Error");
                 }
-
+                if (!context.mounted) return;
                 Navigator.push(
                     context,
                     MaterialPageRoute(
