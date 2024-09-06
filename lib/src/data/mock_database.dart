@@ -103,9 +103,16 @@ class MockDatabase implements DatabaseRepository {
   }
 
   @override
-  Future<List<ClothingItem>?> getMultibleProduct(List<String> productIds) async{
+  Future<List<ClothingItem>?> getMultibleProduct(
+      List<String> productIds) async {
     await Future.delayed(const Duration(seconds: 2));
     List<ClothingItem> clothing = [];
     return clothing;
+  }
+
+  @override
+  Future<ClothingItem?> getProduct(String productId) async {
+    await Future.delayed(const Duration(seconds: 2));
+    return null;
   }
 }

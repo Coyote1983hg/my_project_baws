@@ -10,4 +10,5 @@ abstract class DatabaseRepository {
   Future<void> addItemToCart(ClothingItem clothingItem, User user);
   Future<void> removeItemFromCart(ClothingItem clothingItem);
   Future<List<ClothingItem>?> getMultibleProduct(List<String> productIds);
+  Future<ClothingItem?> getProduct(String productId);
 }
